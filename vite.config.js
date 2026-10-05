@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
-  // GitHub Pages serves project sites from /<repo-name>/, so the Pages workflow sets
-  // BASE_PATH. Firebase Hosting and local dev serve from the root.
-  base: process.env.BASE_PATH || '/',
+  // Relative asset URLs, so the build works from any path: the root (Firebase Hosting,
+  // custom domain) or a sub-folder (GitHub Pages project site at /<repo-name>/).
+  base: './',
   plugins: [react()],
 });
