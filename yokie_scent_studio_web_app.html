@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yokie Scent Studio | Bespoke Fragrance & Sensory Workshops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FAF7F2',
+                            100: '#F3EDE2',
+                            200: '#E6D7C3',
+                            300: '#D5BDA0',
+                            400: '#C2A07E',
+                            500: '#AA825C',
+                            600: '#8E6743',
+                            700: '#714F33',
+                            800: '#563B26',
+                            900: '#3D2A1C',
+                        },
+                        pastel: {
+                            blue: '#D0E8F2',
+                            pink: '#FAD2E1',
+                            green: '#E2F0D9',
+                            yellow: '#FFF5BA',
+                            lavender: '#E8DFF5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .hero-pattern {
+            background-color: #FAF7F2;
+            background-image: radial-gradient(#AA825C 0.5px, transparent 0.5px), radial-gradient(#AA825C 0.5px, #FAF7F2 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-brand-900 font-sans antialiased selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full glass-card border-b border-brand-100/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-brand-300 flex items-center justify-center text-white font-serif text-xl font-bold shadow-sm transition-transform group-hover:scale-105">
+                        <i class="fa-solid fa-droplet text-brand-50 text-sm"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif text-xl font-semibold tracking-wide text-brand-900 block leading-none">YOKIE SCENT</span>
+                        <span class="text-[10px] tracking-widest uppercase text-brand-500 font-medium">Sensory Studio</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-800">
+                    <a href="#home" class="hover:text-brand-500 transition-colors">Home</a>
+                    <a href="#workshops" class="hover:text-brand-500 transition-colors">Workshops</a>
+                    <a href="#corporate" class="hover:text-brand-500 transition-colors">Corporate & Events</a>
+                    <a href="#shop" class="hover:text-brand-500 transition-colors">DIY Kits</a>
+                    <a href="#gallery" class="hover:text-brand-500 transition-colors">Pop-Ups</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="hidden md:flex items-center gap-4">
+                    <button onclick="toggleCart()" class="relative p-2.5 rounded-full bg-white border border-brand-200 text-brand-800 hover:bg-brand-100 transition-colors">
+                        <i class="fa-solid fa-bag-shopping text-base"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-brand-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                    </button>
+                    <a href="#workshops" class="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-800 text-brand-50 text-sm font-medium hover:bg-brand-900 transition-all shadow-sm hover:shadow">
+                        Book Now
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button onclick="toggleCart()" class="relative p-2 rounded-full bg-white border border-brand-200 text-brand-800">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                        <span id="cart-count-mobile" class="absolute -top-1 -right-1 bg-brand-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                    </button>
+                    <button type="button" onclick="toggleMobileMenu()" class="p-2 rounded-lg text-brand-800 hover:bg-brand-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden border-b border-brand-200 bg-brand-50 px-4 pt-2 pb-6 space-y-3" id="mobile-menu">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-brand-800 hover:text-brand-500">Home</a>
+            <a href="#workshops" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-brand-800 hover:text-brand-500">Workshops</a>
+            <a href="#corporate" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-brand-800 hover:text-brand-500">Corporate & Events</a>
+            <a href="#shop" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-brand-800 hover:text-brand-500">DIY Kits</a>
+            <a href="#gallery" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-brand-800 hover:text-brand-500">Pop-Ups</a>
+            <a href="#workshops" onclick="toggleMobileMenu()" class="w-full text-center block mt-4 px-5 py-3 rounded-xl bg-brand-800 text-brand-50 font-medium">Book Workshop</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-20 lg:py-28 overflow-hidden hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/80 border border-brand-200/60 text-brand-800 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Melbourne Pop-Up & Global Workshop Kits
+                    </div>
+                    
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-brand-900">
+                        Scent on the Move: <br>
+                        <span class="italic text-brand-600 font-serif">Craft Your Signature</span> Fragrance
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-brand-700 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Step into an immersive tactile workshop experience. Blend custom liquid diffusers, formulate wearable solid perfume charms, and decorate aesthetic candles with intention.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#workshops" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg text-center">
+                            Explore Workshops
+                        </a>
+                        <a href="#corporate" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-brand-200 text-brand-800 font-medium hover:bg-brand-100 transition-all text-center">
+                            Corporate Inquiries
+                        </a>
+                    </div>
+
+                    <!-- Trust Highlights -->
+                    <div class="pt-6 border-t border-brand-200/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="font-serif text-2xl font-bold text-brand-900">100%</p>
+                            <p class="text-xs text-brand-600">Skin Safe Oils</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl font-bold text-brand-900">1,200+</p>
+                            <p class="text-xs text-brand-600">Guests Welcomed</p>
+                        </div>
+                        <div>
+                            <p class="font-serif text-2xl font-bold text-brand-900">4.9 ★</p>
+                            <p class="text-xs text-brand-600">Event Rating</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual Display -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Main Hero Glass Card -->
+                        <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl relative z-20">
+                            <div class="aspect-4/3 rounded-2xl bg-brand-100 overflow-hidden mb-6 relative">
+                                <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=800" alt="Diffuser Workshop" class="w-full h-full object-cover">
+                                <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold text-brand-800 shadow-sm">
+                                    Live Station Setup
+                                </span>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="font-serif text-xl font-medium text-brand-900">Bespoke Reed Diffuser</h3>
+                                    <span class="text-brand-600 font-bold">$65 AUD</span>
+                                </div>
+                                <p class="text-xs text-brand-700 leading-relaxed">
+                                    Mix, measure, and pour custom fragrance notes into amber glass vessels with natural fiber reeds.
+                                </p>
+                                <button onclick="openBookingModal('Bespoke Liquid Diffuser Blending', 65)" class="w-full py-3 rounded-xl bg-brand-200 text-brand-900 font-medium hover:bg-brand-300 transition-colors text-sm">
+                                    Quick Book Experience
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Floating Decorative Badges -->
+                        <div class="absolute -top-6 -left-6 bg-pastel-pink/90 backdrop-blur-md p-4 rounded-2xl shadow-lg z-30 hidden sm:flex items-center gap-3 border border-white">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-pink-500">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">Mini Heart Candles</p>
+                                <p class="text-[10px] text-slate-600">Decorate with Botanicals</p>
+                            </div>
+                        </div>
+
+                        <div class="absolute -bottom-6 -right-6 bg-pastel-blue/90 backdrop-blur-md p-4 rounded-2xl shadow-lg z-30 hidden sm:flex items-center gap-3 border border-white">
+                            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-sky-600">
+                                <i class="fa-solid fa-car"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-slate-800">Vent Clips & Keychains</p>
+                                <p class="text-[10px] text-slate-600">Scent On The Go</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshops & Booking Section -->
+    <section id="workshops" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-brand-500 mb-2 block">Hands-On Experiences</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-normal text-brand-900">Our Signature Studio Workshops</h2>
+                <p class="text-brand-700 mt-3 font-light">Select a session below to book individual tickets, group tables, or private celebrations.</p>
+                
+                <!-- Workshop Filter Tabs -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+                    <button onclick="filterWorkshops('all')" class="filter-btn active px-5 py-2 rounded-full text-xs font-medium border border-brand-200 bg-brand-800 text-white transition-all">All Experiences</button>
+                    <button onclick="filterWorkshops('diffuser')" class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-brand-200 bg-white text-brand-800 hover:bg-brand-100 transition-all">Diffusers & Vents</button>
+                    <button onclick="filterWorkshops('wearable')" class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-brand-200 bg-white text-brand-800 hover:bg-brand-100 transition-all">Solid Perfume Keychains</button>
+                    <button onclick="filterWorkshops('candles')" class="filter-btn px-5 py-2 rounded-full text-xs font-medium border border-brand-200 bg-white text-brand-800 hover:bg-brand-100 transition-all">Candle Artistry</button>
+                </div>
+            </div>
+
+            <!-- Workshop Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="workshop-grid">
+                
+                <!-- Card 1 -->
+                <div class="workshop-card category-diffuser bg-brand-50 rounded-2xl p-6 border border-brand-100 hover:border-brand-300 transition-all hover:shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-4/3 rounded-xl bg-brand-200 mb-5 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=500" alt="Liquid Diffuser" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-white/90 text-brand-900 text-[10px] font-bold px-2.5 py-1 rounded-md">90 Mins</span>
+                        </div>
+                        <h3 class="font-serif text-lg font-semibold text-brand-900 mb-2">Bespoke Liquid Diffuser Blending</h3>
+                        <p class="text-xs text-brand-700 leading-relaxed mb-4">Formulate your signature home fragrance from 20+ fine fragrance notes into a 100ml amber glass vessel.</p>
+                        <ul class="text-xs text-brand-800 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 100ml Glass Diffuser & Fiber Reeds</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Olfactory Fragrance Profile Sheet</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Gift Box Packaging Included</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-200 mb-4">
+                            <span class="text-xs text-brand-600">Per Person</span>
+                            <span class="font-serif text-xl font-bold text-brand-900">$65 AUD</span>
+                        </div>
+                        <button onclick="openBookingModal('Bespoke Liquid Diffuser Blending', 65)" class="w-full py-2.5 rounded-xl bg-brand-800 text-white text-xs font-medium hover:bg-brand-900 transition-colors">
+                            Book Session
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="workshop-card category-wearable bg-brand-50 rounded-2xl p-6 border border-brand-100 hover:border-brand-300 transition-all hover:shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-4/3 rounded-xl bg-pastel-pink/40 mb-5 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&q=80&w=500" alt="Solid Perfume Keychain" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-white/90 text-brand-900 text-[10px] font-bold px-2.5 py-1 rounded-md">75 Mins</span>
+                        </div>
+                        <h3 class="font-serif text-lg font-semibold text-brand-900 mb-2">Wearable Solid Perfume & Bead Keychain</h3>
+                        <p class="text-xs text-brand-700 leading-relaxed mb-4">Melt beeswax and skin-safe botanical oils into solid perfume beads and assemble custom charm keychains.</p>
+                        <ul class="text-xs text-brand-800 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 2 Custom Solid Perfume Lockets</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Faux Fur or Pom-Pom Hardware</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Natural Beeswax & Jojoba Carrier</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-200 mb-4">
+                            <span class="text-xs text-brand-600">Per Person</span>
+                            <span class="font-serif text-xl font-bold text-brand-900">$55 AUD</span>
+                        </div>
+                        <button onclick="openBookingModal('Wearable Solid Perfume Keychain', 55)" class="w-full py-2.5 rounded-xl bg-brand-800 text-white text-xs font-medium hover:bg-brand-900 transition-colors">
+                            Book Session
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="workshop-card category-candles bg-brand-50 rounded-2xl p-6 border border-brand-100 hover:border-brand-300 transition-all hover:shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-4/3 rounded-xl bg-pastel-yellow/40 mb-5 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=500" alt="Jelly Candle" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-white/90 text-brand-900 text-[10px] font-bold px-2.5 py-1 rounded-md">90 Mins</span>
+                        </div>
+                        <h3 class="font-serif text-lg font-semibold text-brand-900 mb-2">Jelly, Crystal & Heart Candle Decorating</h3>
+                        <p class="text-xs text-brand-700 leading-relaxed mb-4">Craft translucent gel candles with crystal embeds, glitter, and botanical tops. Includes mini heart candles.</p>
+                        <ul class="text-xs text-brand-800 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 1 Gel Crystal Glass Candle Vessel</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 2 Decorated Pastel Heart Tea Lights</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Real Gemstone & Dried Floral Embeds</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-200 mb-4">
+                            <span class="text-xs text-brand-600">Per Person</span>
+                            <span class="font-serif text-xl font-bold text-brand-900">$59 AUD</span>
+                        </div>
+                        <button onclick="openBookingModal('Jelly & Crystal Candle Decorating', 59)" class="w-full py-2.5 rounded-xl bg-brand-800 text-white text-xs font-medium hover:bg-brand-900 transition-colors">
+                            Book Session
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="workshop-card category-diffuser bg-brand-50 rounded-2xl p-6 border border-brand-100 hover:border-brand-300 transition-all hover:shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="aspect-4/3 rounded-xl bg-pastel-blue/40 mb-5 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&q=80&w=500" alt="Car Diffuser Bar" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-white/90 text-brand-900 text-[10px] font-bold px-2.5 py-1 rounded-md">45 Mins</span>
+                        </div>
+                        <h3 class="font-serif text-lg font-semibold text-brand-900 mb-2">Portable Car Vent & Pocket Scent Bar</h3>
+                        <p class="text-xs text-brand-700 leading-relaxed mb-4">A fast-paced interactive express bar session to formulate portable vent diffuser clips and pocket scent pods.</p>
+                        <ul class="text-xs text-brand-800 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 2 Metal Car Vent Diffuser Clips</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> 1 Pocket Aromatherapy Pod</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-500"></i> Quick Express Blend Guide</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-between pt-4 border-t border-brand-200 mb-4">
+                            <span class="text-xs text-brand-600">Per Person</span>
+                            <span class="font-serif text-xl font-bold text-brand-900">$39 AUD</span>
+                        </div>
+                        <button onclick="openBookingModal('Portable Car Vent & Pocket Scent Bar', 39)" class="w-full py-2.5 rounded-xl bg-brand-800 text-white text-xs font-medium hover:bg-brand-900 transition-colors">
+                            Book Session
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate Activations Section -->
+    <section id="corporate" class="py-20 bg-brand-100/60 border-y border-brand-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-600 block">B2B & Private Events</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-normal text-brand-900">
+                        Elevate Team Events with Interactive Scent Bars
+                    </h2>
+                    <p class="text-sm text-brand-800 leading-relaxed font-light">
+                        Designed specifically for HR teams, brand pop-ups, and studio collaborations. We bring our mobile sensory bar directly to your venue or office with zero mess and complete custom branding options.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div class="bg-white p-4 rounded-xl border border-brand-200/80">
+                            <i class="fa-solid fa-wand-magic-sparkles text-brand-500 mb-2 text-lg"></i>
+                            <h4 class="font-medium text-xs text-brand-900">Zero-Mess Setup</h4>
+                            <p class="text-[11px] text-brand-600 mt-1">No heating or heavy cleanup required for liquid & keychain bars.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl border border-brand-200/80">
+                            <i class="fa-solid fa-tags text-brand-500 mb-2 text-lg"></i>
+                            <h4 class="font-medium text-xs text-brand-900">Custom Branding</h4>
+                            <p class="text-[11px] text-brand-600 mt-1">Add your company logo to diffuser labels and gift boxes.</p>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-brand-800 pt-2">
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-300 text-white flex items-center justify-center text-[10px]"><i class="fa-solid fa-check"></i></div>
+                            <span>Capacity for 10 to 200+ guests simultaneously</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-brand-300 text-white flex items-center justify-center text-[10px]"><i class="fa-solid fa-check"></i></div>
+                            <span>Includes dedicated master perfumer & facilitators</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Instant Quote Form -->
+                <div class="lg:col-span-6">
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl border border-white">
+                        <h3 class="font-serif text-2xl font-semibold text-brand-900 mb-1">Request a Corporate Quote</h3>
+                        <p class="text-xs text-brand-700 mb-6">Receive an instant estimate for your event date.</p>
+
+                        <form id="corporate-quote-form" onsubmit="calculateQuote(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-medium text-brand-800 mb-1">Event Type</label>
+                                <select id="quote-type" class="w-full px-4 py-2.5 rounded-xl bg-white border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                                    <option value="55">Liquid Diffuser Blending Station ($55/head)</option>
+                                    <option value="45">Solid Perfume Keychain Bar ($45/head)</option>
+                                    <option value="60">Full Sensory Multi-Bar Package ($60/head)</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-800 mb-1">Estimated Guests</label>
+                                    <input type="number" id="quote-guests" min="10" max="300" value="25" oninput="calculateQuote(event)" class="w-full px-4 py-2.5 rounded-xl bg-white border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-800 mb-1">Preferred Date</label>
+                                    <input type="date" required class="w-full px-4 py-2.5 rounded-xl bg-white border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-medium text-brand-800 mb-1">Work Email</label>
+                                <input type="email" placeholder="hr@company.com" required class="w-full px-4 py-2.5 rounded-xl bg-white border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                            </div>
+
+                            <!-- Calculated Result Display -->
+                            <div class="p-4 rounded-xl bg-brand-50 border border-brand-200 flex items-center justify-between">
+                                <div>
+                                    <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Estimated Investment</p>
+                                    <p class="font-serif text-2xl font-bold text-brand-900" id="quote-total">$1,375 AUD</p>
+                                </div>
+                                <span class="text-[11px] text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md font-medium">Facilitation Included</span>
+                            </div>
+
+                            <button type="submit" class="w-full py-3 rounded-xl bg-brand-800 text-white font-medium text-xs hover:bg-brand-900 transition-colors shadow">
+                                Submit Formal Booking Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DIY Kits Storefront -->
+    <section id="shop" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block">Worldwide Express Shipping</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-normal text-brand-900 mt-1">At-Home DIY Craft Kits</h2>
+                </div>
+                <p class="text-xs text-brand-700 mt-2 md:mt-0 max-w-xs">Craft your own bespoke home scents anywhere in the world. Pre-measured & spill-proof.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Product 1 -->
+                <div class="bg-brand-50 rounded-2xl p-5 border border-brand-100 hover:shadow-md transition-all group">
+                    <div class="aspect-square rounded-xl bg-white mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=400" alt="DIY Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <span class="absolute top-3 left-3 bg-brand-800 text-white text-[10px] uppercase font-bold px-2 py-1 rounded">Worldwide Delivery</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-serif text-base font-semibold text-brand-900">Bespoke Diffuser Box</h3>
+                        <span class="font-bold text-brand-900 text-sm">$49 AUD</span>
+                    </div>
+                    <p class="text-xs text-brand-700 mb-4 leading-relaxed">Complete glass vessel, pre-blended liquid base, rattan reeds, and mini car vent bottle.</p>
+                    <button onclick="addToCart('Bespoke Diffuser Box', 49)" class="w-full py-2.5 rounded-xl bg-white border border-brand-300 text-brand-900 text-xs font-medium hover:bg-brand-800 hover:text-white transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-brand-50 rounded-2xl p-5 border border-brand-100 hover:shadow-md transition-all group">
+                    <div class="aspect-square rounded-xl bg-white mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=400" alt="Heart Candle Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <span class="absolute top-3 left-3 bg-brand-800 text-white text-[10px] uppercase font-bold px-2 py-1 rounded">Popular Gift</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-serif text-base font-semibold text-brand-900">Mini Heart Candle Kit</h3>
+                        <span class="font-bold text-brand-900 text-sm">$42 AUD</span>
+                    </div>
+                    <p class="text-xs text-brand-700 mb-4 leading-relaxed">6 pastel heart candle bases, glitter, dried botanicals, and charm embellishments.</p>
+                    <button onclick="addToCart('Mini Heart Candle Kit', 42)" class="w-full py-2.5 rounded-xl bg-white border border-brand-300 text-brand-900 text-xs font-medium hover:bg-brand-800 hover:text-white transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-brand-50 rounded-2xl p-5 border border-brand-100 hover:shadow-md transition-all group">
+                    <div class="aspect-square rounded-xl bg-white mb-4 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&q=80&w=400" alt="Solid Perfume Kit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-serif text-base font-semibold text-brand-900">Solid Perfume Locket Set</h3>
+                        <span class="font-bold text-brand-900 text-sm">$38 AUD</span>
+                    </div>
+                    <p class="text-xs text-brand-700 mb-4 leading-relaxed">Beeswax pellets, jojoba carrier oil, brass locket charms, and keyring hardware.</p>
+                    <button onclick="addToCart('Solid Perfume Locket Set', 38)" class="w-full py-2.5 rounded-xl bg-white border border-brand-300 text-brand-900 text-xs font-medium hover:bg-brand-800 hover:text-white transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery & Pop-Up Calendar -->
+    <section id="gallery" class="py-20 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Calendar -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block">Find Us In Person</span>
+                        <h2 class="font-serif text-3xl font-normal text-brand-900 mt-1">Pop-Up Market Calendar</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white rounded-2xl border border-brand-200 flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-brand-100 flex flex-col items-center justify-center text-brand-900">
+                                <span class="text-[10px] uppercase font-bold text-brand-600">OCT</span>
+                                <span class="font-serif text-xl font-bold">18</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-sm text-brand-900">Melbourne Maker's Market</h4>
+                                <p class="text-xs text-brand-600">Carlton Gardens • 10:00 AM - 4:00 PM</p>
+                                <span class="inline-block mt-1 text-[10px] text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Walk-in Scent Bar Available</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-2xl border border-brand-200 flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-brand-100 flex flex-col items-center justify-center text-brand-900">
+                                <span class="text-[10px] uppercase font-bold text-brand-600">NOV</span>
+                                <span class="font-serif text-xl font-bold">02</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-sm text-brand-900">Pilates & Breathe Studio Pop-Up</h4>
+                                <p class="text-xs text-brand-600">South Yarra • 1:00 PM - 5:00 PM</p>
+                                <span class="inline-block mt-1 text-[10px] text-brand-700 bg-brand-100 px-2 py-0.5 rounded">Special Mind & Scent Session</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-2xl border border-brand-200 flex items-center gap-4">
+                            <div class="w-14 h-14 rounded-xl bg-brand-100 flex flex-col items-center justify-center text-brand-900">
+                                <span class="text-[10px] uppercase font-bold text-brand-600">DEC</span>
+                                <span class="font-serif text-xl font-bold">12</span>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-sm text-brand-900">Christmas Twilight Night Market</h4>
+                                <p class="text-xs text-brand-600">Docklands Pier • 5:00 PM - 9:30 PM</p>
+                                <span class="inline-block mt-1 text-[10px] text-rose-700 bg-rose-100 px-2 py-0.5 rounded">Holiday Gifting Station</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Photo Grid -->
+                <div class="lg:col-span-7">
+                    <span class="text-xs font-bold uppercase tracking-widest text-brand-500 block mb-2">#YokieScentStudio</span>
+                    <h2 class="font-serif text-3xl font-normal text-brand-900 mb-6">Workshop Moments</h2>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-brand-200">
+                            <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-brand-200">
+                            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-brand-200">
+                            <img src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-brand-200">
+                            <img src="https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-brand-200">
+                            <img src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&q=80&w=300" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="aspect-square rounded-2xl overflow-hidden bg-brand-300 flex flex-col items-center justify-center text-white p-4 text-center">
+                            <i class="fa-brands fa-instagram text-2xl mb-1"></i>
+                            <span class="text-xs font-semibold">@yokie.scent</span>
+                            <span class="text-[10px] text-brand-100">Follow on Socials</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-100 py-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <span class="font-serif text-xl font-bold text-white block mb-2">YOKIE SCENT</span>
+                    <p class="text-xs text-brand-300 leading-relaxed">
+                        Bespoke sensory workshops, portable fragrance tools, and mind-wellness activations.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-brand-300">
+                        <li><a href="#workshops" class="hover:text-white">Book Workshop</a></li>
+                        <li><a href="#corporate" class="hover:text-white">Corporate Events</a></li>
+                        <li><a href="#shop" class="hover:text-white">At-Home Kits</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Location & Studio</h4>
+                    <p class="text-xs text-brand-300">Q Station & Melbourne Pop-Ups</p>
+                    <p class="text-xs text-brand-300 mt-1">hello@yokiescent.com</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-3">Stay Scented</h4>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 bg-brand-800 text-xs rounded-lg text-white placeholder-brand-400 focus:outline-none w-full">
+                        <button class="px-4 py-2 bg-brand-500 text-white rounded-lg text-xs hover:bg-brand-400">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-brand-800 text-center text-[11px] text-brand-400">
+                © 2026 Yokie Scent Studio. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-brand-400 hover:text-brand-900">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <span class="text-[10px] font-bold uppercase tracking-widest text-brand-500 block mb-1">Interactive Booking</span>
+            <h3 class="font-serif text-2xl font-semibold text-brand-900 mb-1" id="modal-workshop-title">Workshop Name</h3>
+            <p class="text-xs text-brand-600 mb-6" id="modal-workshop-price">$0 AUD per person</p>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-brand-800 mb-1">Select Date</label>
+                    <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-brand-800 mb-1">Select Time Slot</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <button type="button" class="time-slot-btn py-2 text-xs rounded-xl border border-brand-200 text-brand-800 hover:bg-brand-100 active bg-brand-800 text-white">10:30 AM</button>
+                        <button type="button" class="time-slot-btn py-2 text-xs rounded-xl border border-brand-200 text-brand-800 hover:bg-brand-100">01:30 PM</button>
+                        <button type="button" class="time-slot-btn py-2 text-xs rounded-xl border border-brand-200 text-brand-800 hover:bg-brand-100">04:00 PM</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-brand-800 mb-1">Number of Guests</label>
+                        <input type="number" id="booking-guests" min="1" max="10" value="1" onchange="updateModalTotal()" class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-brand-800 mb-1">Full Name</label>
+                        <input type="text" required placeholder="Jane Doe" class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-brand-800 mb-1">Email Address</label>
+                    <input type="email" required placeholder="jane@example.com" class="w-full px-4 py-2.5 rounded-xl border border-brand-200 text-xs text-brand-900 focus:outline-none focus:border-brand-500">
+                </div>
+
+                <div class="pt-4 border-t border-brand-100 flex items-center justify-between">
+                    <span class="text-xs text-brand-600">Total Payable:</span>
+                    <span class="font-serif text-2xl font-bold text-brand-900" id="modal-total-price">$0 AUD</span>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-brand-800 text-white font-medium text-xs hover:bg-brand-900 transition-colors">
+                    Confirm Reservation
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-brand-100 flex items-center justify-between">
+            <h3 class="font-serif text-lg font-bold text-brand-900">Your Shopping Bag</h3>
+            <button onclick="toggleCart()" class="text-brand-400 hover:text-brand-900">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+        </div>
+
+        <div id="cart-items" class="p-6 flex-1 overflow-y-auto space-y-4">
+            <p class="text-xs text-brand-500 text-center py-8">Your bag is currently empty.</p>
+        </div>
+
+        <div class="p-6 border-t border-brand-100 space-y-4">
+            <div class="flex justify-between text-sm font-bold text-brand-900">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0 AUD</span>
+            </div>
+            <button onclick="alert('Checkout process initiated!')" class="w-full py-3 rounded-xl bg-brand-800 text-white text-xs font-medium hover:bg-brand-900 transition-colors">
+                Proceed to Worldwide Checkout
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // State variables
+        let currentWorkshopPrice = 0;
+        let cart = [];
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Workshop Filter Function
+        function filterWorkshops(category) {
+            const cards = document.querySelectorAll('.workshop-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-800', 'text-white');
+                btn.classList.add('bg-white', 'text-brand-800');
+            });
+
+            event.target.classList.remove('bg-white', 'text-brand-800');
+            event.target.classList.add('bg-brand-800', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(`category-${category}`)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Booking Modal Control
+        function openBookingModal(title, price) {
+            currentWorkshopPrice = price;
+            document.getElementById('modal-workshop-title').innerText = title;
+            document.getElementById('modal-workshop-price').innerText = `$${price} AUD per person`;
+            document.getElementById('booking-guests').value = 1;
+            updateModalTotal();
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function updateModalTotal() {
+            const guests = parseInt(document.getElementById('booking-guests').value) || 1;
+            const total = guests * currentWorkshopPrice;
+            document.getElementById('modal-total-price').innerText = `$${total} AUD`;
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            alert('Reservation submitted successfully! A confirmation email has been dispatched.');
+            closeBookingModal();
+        }
+
+        // Corporate Quote Calculation
+        function calculateQuote(e) {
+            if(e) e.preventDefault();
+            const pricePerHead = parseInt(document.getElementById('quote-type').value);
+            const guests = parseInt(document.getElementById('quote-guests').value) || 10;
+            const total = pricePerHead * guests;
+            document.getElementById('quote-total').innerText = `$${total.toLocaleString()} AUD`;
+        }
+
+        // Cart Drawer Control
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            updateCartUI();
+            toggleCart();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            const countBadge = document.getElementById('cart-count');
+            const countBadgeMobile = document.getElementById('cart-count-mobile');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            countBadge.innerText = cart.length;
+            countBadgeMobile.innerText = cart.length;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="text-xs text-brand-500 text-center py-8">Your bag is currently empty.</p>';
+                subtotalEl.innerText = '$0 AUD';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="flex items-center justify-between p-3 bg-brand-50 rounded-xl border border-brand-100">
+                        <div>
+                            <h4 class="text-xs font-semibold text-brand-900">${item.title}</h4>
+                            <p class="text-[10px] text-brand-600">$${item.price} AUD</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-600 text-xs">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            subtotalEl.innerText = `$${total} AUD`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+    </script>
+</body>
+</html>

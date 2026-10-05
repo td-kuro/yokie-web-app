@@ -1,0 +1,113 @@
+rules_version = '2';
+
+// Starter rules for Yokie Scent Studio.
+// - Catalogue collections are public to read; only admins can change them.
+// - Public forms can CREATE submissions that match the expected shape, but nobody
+//   except admins can read, edit or delete them.
+// Admins are users with the custom claim { admin: true }, set server-side with the
+// Firebase Admin SDK (never from the browser).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null && request.auth.token.admin == true;
+    }
+
+    function isText(value, maxLength) {
+      return value is string && value.size() > 0 && value.size() <= maxLength;
+    }
+
+    function isEmail(value) {
+      return isText(value, 254) && value.matches('^[^@ ]+@[^@ ]+[.][^@ ]+$');
+    }
+
+    function isIsoDate(value) {
+      return value is string && value.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+    }
+
+    function isWholeNumberBetween(value, min, max) {
+      return value is int && value >= min && value <= max;
+    }
+
+    function hasExactly(data, fields) {
+      return data.keys().hasAll(fields) && data.keys().hasOnly(fields);
+    }
+
+    function isValidBooking(data) {
+      return hasExactly(data, [
+          'workshopId', 'workshopTitle', 'pricePerPerson', 'sessionDate', 'timeSlot',
+          'guests', 'estimatedTotal', 'fullName', 'email', 'status', 'createdAt'
+        ])
+        && isText(data.workshopId, 100)
+        && isText(data.workshopTitle, 200)
+        && data.pricePerPerson is number && data.pricePerPerson >= 0
+        && isIsoDate(data.sessionDate)
+        && isText(data.timeSlot, 20)
+        && isWholeNumberBetween(data.guests, 1, 10)
+        && data.estimatedTotal is number && data.estimatedTotal >= 0
+        && isText(data.fullName, 120)
+        && isEmail(data.email)
+        && data.status == 'pending'
+        && data.createdAt == request.time;
+    }
+
+    function isValidQuoteRequest(data) {
+      return hasExactly(data, [
+          'packageId', 'packageLabel', 'pricePerHead', 'guests', 'eventDate',
+          'email', 'estimatedTotal', 'status', 'createdAt'
+        ])
+        && isText(data.packageId, 100)
+        && isText(data.packageLabel, 200)
+        && data.pricePerHead is number && data.pricePerHead >= 0
+        && isWholeNumberBetween(data.guests, 10, 300)
+        && isIsoDate(data.eventDate)
+        && isEmail(data.email)
+        && data.estimatedTotal is number && data.estimatedTotal >= 0
+        && data.status == 'new'
+        && data.createdAt == request.time;
+    }
+
+    // ---------- Catalogue (public read, admin write) ----------
+
+    match /workshops/{workshopId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /popUpEvents/{eventId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /galleryImages/{imageId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ---------- Submissions (public create, admin manage) ----------
+    // Prices sent from the browser are estimates only. Recalculate them server-side
+    // (e.g. in a Cloud Function) before charging anyone.
+
+    match /bookings/{bookingId} {
+      allow create: if isValidBooking(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /quoteRequests/{quoteId} {
+      allow create: if isValidQuoteRequest(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    match /newsletterSubscribers/{subscriberId} {
+      allow create: if hasExactly(request.resource.data, ['email', 'createdAt'])
+        && isEmail(request.resource.data.email)
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}
