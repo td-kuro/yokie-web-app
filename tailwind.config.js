@@ -32,6 +32,7 @@ export default {
       // The prototype used `aspect-4/3`, which Tailwind v3 does not ship by default.
       aspectRatio: {
         '4/3': '4 / 3',
+        '4/5': '4 / 5',
       },
     },
   },

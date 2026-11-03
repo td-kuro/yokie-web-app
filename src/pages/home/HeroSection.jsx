@@ -1,3 +1,4 @@
+import heroImage from '../../assets/noel-night-christmas-2026.jpg';
 import { useBooking } from '../../hooks/useBooking';
 import { formatAud } from '../../utils/formatters';
 
@@ -77,10 +78,10 @@ export default function HeroSection() {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md lg:max-w-none">
               <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl relative z-20">
-                <div className="aspect-4/3 rounded-2xl bg-brand-100 overflow-hidden mb-6 relative">
+                <div className="aspect-4/5 rounded-2xl bg-brand-100 overflow-hidden mb-6 relative">
                   <img
-                    src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=800"
-                    alt="Diffuser Workshop"
+                    src={heroImage}
+                    alt="Yokie Scent Noel Night Christmas Collection 2026: petite heart candles spelling LOVE XMAS"
                     fetchPriority="high"
                     className="w-full h-full object-cover"
                   />
