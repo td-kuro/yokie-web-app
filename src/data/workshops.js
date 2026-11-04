@@ -62,8 +62,8 @@ export const workshops = [
     durationLabel: '90 Mins',
     price: 59,
     imageUrl: candleDecoratingImage,
-    imageAlt: 'Yokie Scent candles lit on a wooden table beside books and fresh flowers',
-    imagePosition: 'center 85%',
+    imageAlt: 'Lit Yokie Scent candle on a wooden table beside books and fresh flowers',
+    imagePosition: 'center 95%',
     accent: 'yellow',
     inclusions: [
       '1 Gel Crystal Glass Candle Vessel',
