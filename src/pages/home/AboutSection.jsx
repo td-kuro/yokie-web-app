@@ -26,9 +26,9 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 max-w-5xl mx-auto">
           {STORY_BLOCKS.map((block) => (
-            <article key={block.title} className="bg-white p-6 sm:p-8 rounded-2xl border border-brand-200/80">
+            <article key={block.title}>
               <i className={`fa-solid ${block.icon} text-brand-500 text-xl mb-4`} aria-hidden="true" />
               <h3 className="font-serif text-2xl font-normal text-brand-900 mb-3">{block.title}</h3>
               <p className="text-sm text-brand-800 leading-relaxed font-light">{block.text}</p>
