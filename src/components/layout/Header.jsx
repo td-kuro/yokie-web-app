@@ -36,7 +36,7 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:flex items-center gap-4">
-            <CartButton />
+            {siteConfig.shopEnabled && <CartButton />}
             <a
               href="#workshops"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-800 text-brand-50 text-sm font-medium hover:bg-brand-900 transition-all shadow-sm hover:shadow"
@@ -46,7 +46,7 @@ export default function Header() {
           </div>
 
           <div className="md:hidden flex items-center gap-2">
-            <CartButton compact />
+            {siteConfig.shopEnabled && <CartButton compact />}
             <button
               type="button"
               onClick={() => setIsMenuOpen((current) => !current)}

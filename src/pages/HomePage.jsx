@@ -1,3 +1,4 @@
+import { siteConfig } from '../data/siteConfig';
 import AboutSection from './home/AboutSection';
 import GallerySection from './home/GallerySection';
 import HeroSection from './home/HeroSection';
@@ -14,7 +15,7 @@ export default function HomePage() {
       <HeroSection />
       <WorkshopsSection />
       <AboutSection />
-      <ShopSection />
+      {siteConfig.shopEnabled && <ShopSection />}
       <GallerySection />
     </>
   );
