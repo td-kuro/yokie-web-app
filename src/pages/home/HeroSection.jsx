@@ -1,4 +1,5 @@
 import heroImage from '../../assets/noel-night-christmas-2026.jpg';
+import FloatingBadge from '../../components/ui/FloatingBadge';
 import { useBooking } from '../../hooks/useBooking';
 import { formatAud } from '../../utils/formatters';
 
@@ -10,22 +11,6 @@ const TRUST_HIGHLIGHTS = [
   { value: '1,200+', label: 'Guests Welcomed' },
   { value: '4.9 ★', label: 'Event Rating' },
 ];
-
-function FloatingBadge({ icon, iconColorClass, title, subtitle, className }) {
-  return (
-    <div
-      className={`absolute backdrop-blur-md p-4 rounded-2xl shadow-lg z-30 hidden sm:flex items-center gap-3 border border-white ${className}`}
-    >
-      <div className={`w-10 h-10 rounded-full bg-white flex items-center justify-center ${iconColorClass}`}>
-        <i className={`fa-solid ${icon}`} aria-hidden="true" />
-      </div>
-      <div>
-        <p className="text-xs font-bold text-slate-800">{title}</p>
-        <p className="text-[10px] text-slate-600">{subtitle}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function HeroSection() {
   const { openBooking } = useBooking();
