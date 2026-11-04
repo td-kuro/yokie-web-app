@@ -14,7 +14,12 @@ export default function WorkshopCard({ workshop }) {
   const accentClass = IMAGE_ACCENT_CLASSES[workshop.accent] ?? IMAGE_ACCENT_CLASSES.brand;
 
   function handleBook() {
-    openBooking({ id: workshop.id, title: workshop.bookingTitle ?? workshop.title, price: workshop.price });
+    openBooking({
+      id: workshop.id,
+      title: workshop.bookingTitle ?? workshop.title,
+      price: workshop.price,
+      calendlyUrl: workshop.calendlyUrl,
+    });
   }
 
   return (

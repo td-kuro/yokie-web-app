@@ -8,6 +8,8 @@ export const siteConfig = {
   instagramHandle: '@yokie.scent',
   // Set to the full profile URL to turn the gallery's Instagram tile into a link.
   instagramUrl: '',
+  // Default booking calendar. A workshop's own `calendlyUrl` (src/data/workshops.js) takes priority.
+  calendlyUrl: 'https://calendly.com/yokiehome-scentbar',
 };
 
 export const mainNavLinks = [

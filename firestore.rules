@@ -33,20 +33,24 @@ service cloud.firestore {
       return data.keys().hasAll(fields) && data.keys().hasOnly(fields);
     }
 
+    function isCalendlyUri(value) {
+      return isText(value, 300) && value.matches('^https://api[.]calendly[.]com/.+$');
+    }
+
     function isValidBooking(data) {
       return hasExactly(data, [
-          'workshopId', 'workshopTitle', 'pricePerPerson', 'sessionDate', 'timeSlot',
-          'guests', 'estimatedTotal', 'fullName', 'email', 'status', 'createdAt'
+          'workshopId', 'workshopTitle', 'pricePerPerson', 'guests', 'estimatedTotal',
+          'fullName', 'email', 'calendlyEventUri', 'calendlyInviteeUri', 'status', 'createdAt'
         ])
         && isText(data.workshopId, 100)
         && isText(data.workshopTitle, 200)
         && data.pricePerPerson is number && data.pricePerPerson >= 0
-        && isIsoDate(data.sessionDate)
-        && isText(data.timeSlot, 20)
         && isWholeNumberBetween(data.guests, 1, 10)
         && data.estimatedTotal is number && data.estimatedTotal >= 0
         && isText(data.fullName, 120)
         && isEmail(data.email)
+        && isCalendlyUri(data.calendlyEventUri)
+        && isCalendlyUri(data.calendlyInviteeUri)
         && data.status == 'pending'
         && data.createdAt == request.time;
     }

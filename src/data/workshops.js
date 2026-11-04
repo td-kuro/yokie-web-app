@@ -4,6 +4,8 @@ import candleDecoratingImage from '../assets/candle-decorating.jpg';
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
 // (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard;
 // optional `imagePosition` (CSS object-position) adjusts how the image is cropped.
+// Optional `calendlyUrl` is the workshop's own Calendly event link (e.g. https://calendly.com/yokiehome-scentbar/<event>);
+// without it, booking opens the main Calendly page from src/data/siteConfig.js.
 
 export const workshopCategories = [
   { id: 'all', label: 'All Experiences' },
@@ -85,7 +87,5 @@ export const workshops = [
   //   inclusions: ['2 Metal Car Vent Diffuser Clips', '1 Pocket Aromatherapy Pod', 'Quick Express Blend Guide'],
   // },
 ];
-
-export const bookingTimeSlots = ['10:30 AM', '01:30 PM', '04:00 PM'];
 
 export const BOOKING_GUEST_LIMITS = { min: 1, max: 10 };

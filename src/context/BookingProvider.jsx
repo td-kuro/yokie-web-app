@@ -5,7 +5,7 @@ import { BookingContext } from './BookingContext';
 export function BookingProvider({ children }) {
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
 
-  /** @param {{ id: string, title: string, price: number }} workshop */
+  /** @param {{ id: string, title: string, price: number, calendlyUrl?: string }} workshop */
   const openBooking = useCallback((workshop) => setSelectedWorkshop(workshop), []);
   const closeBooking = useCallback(() => setSelectedWorkshop(null), []);
 

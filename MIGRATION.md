@@ -13,7 +13,7 @@ The source of truth for the design was `yokie_scent_studio_web_app.html`, a sing
 | `<header id="navbar">` + mobile menu | `components/layout/Header.jsx`, `MobileMenu.jsx` |
 | `#home` hero | `pages/home/HeroSection.jsx` |
 | `#workshops` cards + `filterWorkshops()` | `pages/home/WorkshopsSection.jsx`, `components/workshops/WorkshopCard.jsx`, `WorkshopFilters.jsx`; data in `src/data/workshops.js` |
-| `#booking-modal` + `openBookingModal()`, `updateModalTotal()`, `handleBookingSubmit()` | `components/booking/BookingModal.jsx`, `BookingForm.jsx`, `TimeSlotPicker.jsx`; state in `context/BookingProvider.jsx` |
+| `#booking-modal` + `openBookingModal()`, `updateModalTotal()`, `handleBookingSubmit()` | `components/booking/BookingModal.jsx`, `BookingForm.jsx`, `CalendlyScheduler.jsx`; state in `context/BookingProvider.jsx` |
 | `#corporate` + `calculateQuote()` | `pages/home/CorporateSection.jsx`, `components/corporate/CorporateQuoteForm.jsx`; pricing in `src/data/corporatePackages.js` |
 | `#shop` + `addToCart()` | `pages/home/ShopSection.jsx`, `components/shop/ProductCard.jsx`; data in `src/data/products.js` |
 | `#cart-drawer` + `toggleCart()`, `updateCartUI()`, `removeFromCart()` | `components/cart/CartDrawer.jsx`, `CartButton.jsx`, `CartLineItem.jsx`; state in `context/CartProvider.jsx` |
