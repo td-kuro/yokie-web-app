@@ -1,3 +1,5 @@
+import bespokeDiffuserBoxImage from '../assets/bespoke-diffuser-box.jpg';
+
 // Local DIY kit catalogue. Firestore documents in the `products` collection use the same shape.
 export const products = [
   {
@@ -5,8 +7,8 @@ export const products = [
     title: 'Bespoke Diffuser Box',
     price: 49,
     description: 'Complete glass vessel, pre-blended liquid base, rattan reeds, and mini car vent bottle.',
-    imageUrl: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=400',
-    imageAlt: 'DIY Kit',
+    imageUrl: bespokeDiffuserBoxImage,
+    imageAlt: 'Yokie Scent reed diffuser and mini spray bottle on a marble tray',
     badge: 'Worldwide Delivery',
   },
   {
