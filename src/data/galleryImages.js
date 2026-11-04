@@ -20,9 +20,10 @@ export const galleryImages = [
     imageUrl: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=300',
     imageAlt: 'Decorated jelly crystal candles',
   },
-  {
-    id: 'car-vent-bar',
-    imageUrl: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&q=80&w=300',
-    imageAlt: 'Car vent and pocket scent bar',
-  },
+  // Hidden for now, along with the Car Vent workshop (see src/data/workshops.js).
+  // {
+  //   id: 'car-vent-bar',
+  //   imageUrl: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&q=80&w=300',
+  //   imageAlt: 'Car vent and pocket scent bar',
+  // },
 ];

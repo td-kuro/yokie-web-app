@@ -37,7 +37,7 @@ export default function WorkshopsSection() {
           We couldn&apos;t load our workshops right now. Please refresh the page or try again shortly.
         </LoadErrorMessage>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" aria-busy={status === 'loading'}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-busy={status === 'loading'}>
           {visibleWorkshops.map((workshop) => (
             <WorkshopCard key={workshop.id} workshop={workshop} />
           ))}

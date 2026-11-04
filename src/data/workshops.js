@@ -1,4 +1,5 @@
 import bespokeDiffuserBoxImage from '../assets/bespoke-diffuser-box.jpg';
+import candleDecoratingImage from '../assets/candle-decorating.jpg';
 
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
 // (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard;
@@ -6,7 +7,7 @@ import bespokeDiffuserBoxImage from '../assets/bespoke-diffuser-box.jpg';
 
 export const workshopCategories = [
   { id: 'all', label: 'All Experiences' },
-  { id: 'diffuser', label: 'Diffusers & Vents' },
+  { id: 'diffuser', label: 'Diffusers' },
   { id: 'wearable', label: 'Solid Perfume Keychains' },
   { id: 'candles', label: 'Candle Artistry' },
 ];
@@ -58,8 +59,9 @@ export const workshops = [
       'Craft translucent gel candles with crystal embeds, glitter, and botanical tops. Includes mini heart candles.',
     durationLabel: '90 Mins',
     price: 59,
-    imageUrl: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=500',
-    imageAlt: 'Jelly Candle',
+    imageUrl: candleDecoratingImage,
+    imageAlt: 'Yokie Scent candles lit on a wooden table beside books and fresh flowers',
+    imagePosition: 'center 85%',
     accent: 'yellow',
     inclusions: [
       '1 Gel Crystal Glass Candle Vessel',
@@ -67,19 +69,21 @@ export const workshops = [
       'Real Gemstone & Dried Floral Embeds',
     ],
   },
-  {
-    id: 'car-vent-scent-bar',
-    category: 'diffuser',
-    title: 'Portable Car Vent & Pocket Scent Bar',
-    description:
-      'A fast-paced interactive express bar session to formulate portable vent diffuser clips and pocket scent pods.',
-    durationLabel: '45 Mins',
-    price: 39,
-    imageUrl: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&q=80&w=500',
-    imageAlt: 'Car Diffuser Bar',
-    accent: 'blue',
-    inclusions: ['2 Metal Car Vent Diffuser Clips', '1 Pocket Aromatherapy Pod', 'Quick Express Blend Guide'],
-  },
+  // Hidden for now. To bring it back, uncomment this block and change `lg:grid-cols-3` back to
+  // `lg:grid-cols-4` in src/pages/home/WorkshopsSection.jsx.
+  // {
+  //   id: 'car-vent-scent-bar',
+  //   category: 'diffuser',
+  //   title: 'Portable Car Vent & Pocket Scent Bar',
+  //   description:
+  //     'A fast-paced interactive express bar session to formulate portable vent diffuser clips and pocket scent pods.',
+  //   durationLabel: '45 Mins',
+  //   price: 39,
+  //   imageUrl: 'https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&q=80&w=500',
+  //   imageAlt: 'Car Diffuser Bar',
+  //   accent: 'blue',
+  //   inclusions: ['2 Metal Car Vent Diffuser Clips', '1 Pocket Aromatherapy Pod', 'Quick Express Blend Guide'],
+  // },
 ];
 
 export const bookingTimeSlots = ['10:30 AM', '01:30 PM', '04:00 PM'];

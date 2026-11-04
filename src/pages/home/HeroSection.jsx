@@ -116,13 +116,14 @@ export default function HeroSection() {
                 subtitle="Decorate with Botanicals"
                 className="-top-6 -left-6 bg-pastel-pink/90"
               />
+              {/* Hidden for now, along with the Car Vent workshop (see src/data/workshops.js).
               <FloatingBadge
                 icon="fa-car"
                 iconColorClass="text-sky-600"
                 title="Vent Clips & Keychains"
                 subtitle="Scent On The Go"
                 className="-bottom-6 -right-6 bg-pastel-blue/90"
-              />
+              /> */}
             </div>
           </div>
         </div>
