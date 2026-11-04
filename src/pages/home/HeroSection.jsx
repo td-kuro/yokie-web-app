@@ -58,10 +58,10 @@ export default function HeroSection() {
                 Explore Workshops
               </a>
               <a
-                href="#corporate"
+                href="#about"
                 className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-brand-200 text-brand-800 font-medium hover:bg-brand-100 transition-all text-center"
               >
-                Corporate Inquiries
+                Our Story
               </a>
             </div>
 
