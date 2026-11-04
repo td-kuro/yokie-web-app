@@ -2,46 +2,66 @@ import { siteConfig } from '../../data/siteConfig';
 
 const STORY_BLOCKS = [
   {
-    icon: 'fa-hand-holding-heart',
+    number: '01',
     title: 'Who we are',
     text: 'A small Melbourne studio led by Yokie. We hand-pour small-batch candles and host workshops for a handful of people at a time. No rush, no screens, no experience needed.',
   },
   {
-    icon: 'fa-palette',
+    number: '02',
     title: 'Inspired by memories, art and a love for handcraft',
     text: "Every Yokie Scent creation begins with a memory: a fragrance that takes you back, a feeling you want to keep. We blend colour, texture and scent with an artist's eye, then pour each one by hand, slowly and with care. Come and make your own at our table, and take home a small moment of calm to light whenever you need it.",
   },
 ];
 
+// Large serif first letter on the opening story, magazine style.
+const DROP_CAP_CLASSES =
+  'first-letter:float-left first-letter:font-serif first-letter:text-7xl first-letter:leading-[0.8] first-letter:mr-3 first-letter:mt-1 first-letter:text-brand-600';
+
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 bg-brand-100/60 border-y border-brand-200/60">
+    <section id="about" className="py-28 lg:py-40 bg-brand-100/60 border-y border-brand-200/60">
       <div className="section-container">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="eyebrow mb-2">Our Story &amp; Philosophy</span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-normal text-brand-900">About Create with Yokie Scent</h2>
-          <p className="text-brand-700 mt-3 font-light leading-relaxed">
+        <header className="text-center max-w-4xl mx-auto">
+          <span className="eyebrow mb-6">Our Story &amp; Philosophy</span>
+          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.05] text-brand-900">
+            About Create with <span className="italic text-brand-600 whitespace-nowrap">Yokie Scent</span>
+          </h2>
+          <div className="w-16 h-px bg-brand-400 mx-auto my-10" aria-hidden="true" />
+          <p className="font-serif italic text-xl sm:text-2xl lg:text-3xl leading-relaxed text-brand-700 max-w-3xl mx-auto">
             A gentle reminder to slow down, disconnect from screens, and reconnect with yourself through the grounding
             power of sensory curation.
           </p>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 max-w-5xl mx-auto">
-          {STORY_BLOCKS.map((block) => (
-            <article key={block.title}>
-              <i className={`fa-solid ${block.icon} text-brand-500 text-xl mb-4`} aria-hidden="true" />
-              <h3 className="font-serif text-2xl font-normal text-brand-900 mb-3">{block.title}</h3>
-              <p className="text-sm text-brand-800 leading-relaxed font-light">{block.text}</p>
+        <div className="max-w-5xl mx-auto mt-20 lg:mt-28">
+          {STORY_BLOCKS.map((block, index) => (
+            <article
+              key={block.title}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 py-12 lg:py-16 border-t border-brand-300/70"
+            >
+              <div className="lg:col-span-5">
+                <span className="block font-serif italic text-brand-500 text-lg mb-3">{block.number}</span>
+                <h3 className="font-serif text-3xl sm:text-4xl font-normal leading-tight text-brand-900">
+                  {block.title}
+                </h3>
+              </div>
+              <p
+                className={`lg:col-span-7 text-lg sm:text-xl leading-loose sm:leading-loose text-brand-800 font-light ${
+                  index === 0 ? DROP_CAP_CLASSES : ''
+                }`}
+              >
+                {block.text}
+              </p>
             </article>
           ))}
-        </div>
 
-        <p className="text-center text-sm text-brand-700 mt-10">
-          Questions?{' '}
-          <a href={`mailto:${siteConfig.email}`} className="font-medium text-brand-900 underline hover:text-brand-600">
-            {siteConfig.email}
-          </a>
-        </p>
+          <p className="pt-12 lg:pt-16 border-t border-brand-300/70 text-center text-base text-brand-700">
+            Questions?{' '}
+            <a href={`mailto:${siteConfig.email}`} className="font-medium text-brand-900 underline hover:text-brand-600">
+              {siteConfig.email}
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );
