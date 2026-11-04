@@ -21,7 +21,13 @@ export default function WorkshopCard({ workshop }) {
     <article className="bg-brand-50 rounded-2xl p-6 border border-brand-100 hover:border-brand-300 transition-all hover:shadow-lg flex flex-col justify-between">
       <div>
         <div className={`aspect-4/3 rounded-xl mb-5 overflow-hidden relative ${accentClass}`}>
-          <img src={workshop.imageUrl} alt={workshop.imageAlt} loading="lazy" className="w-full h-full object-cover" />
+          <img
+            src={workshop.imageUrl}
+            alt={workshop.imageAlt}
+            loading="lazy"
+            className="w-full h-full object-cover"
+            style={workshop.imagePosition ? { objectPosition: workshop.imagePosition } : undefined}
+          />
           <span className="absolute top-2 left-2 bg-white/90 text-brand-900 text-[10px] font-bold px-2.5 py-1 rounded-md">
             {workshop.durationLabel}
           </span>

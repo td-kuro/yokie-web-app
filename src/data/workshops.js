@@ -1,5 +1,8 @@
+import bespokeDiffuserBoxImage from '../assets/bespoke-diffuser-box.jpg';
+
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
-// (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard.
+// (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard;
+// optional `imagePosition` (CSS object-position) adjusts how the image is cropped.
 
 export const workshopCategories = [
   { id: 'all', label: 'All Experiences' },
@@ -17,8 +20,9 @@ export const workshops = [
       'Formulate your signature home fragrance from 20+ fine fragrance notes into a 100ml amber glass vessel.',
     durationLabel: '90 Mins',
     price: 65,
-    imageUrl: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&q=80&w=500',
-    imageAlt: 'Liquid Diffuser',
+    imageUrl: bespokeDiffuserBoxImage,
+    imageAlt: 'Yokie Scent reed diffuser and mini spray bottle on a marble tray',
+    imagePosition: 'center 70%',
     accent: 'brand',
     inclusions: [
       '100ml Glass Diffuser & Fiber Reeds',
