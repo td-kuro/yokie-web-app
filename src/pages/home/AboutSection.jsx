@@ -35,7 +35,7 @@ const STORY_BLOCKS = [
 const CLOSING_LINES = [
   'Pour a warm cup of tea and take a quiet breath.',
   // Non-breaking space keeps “inner peace” together when the line wraps.
-  'Come create with us for some scented self-care for inner\u00A0peace.',
+  'Come create with us and discover scented self-care for inner\u00A0peace.',
 ];
 
 // Oversized serif first letter that sits on the first line and rises above it.
@@ -126,7 +126,7 @@ export default function AboutSection() {
             })}
           </div>
 
-          <div className="mt-20 lg:mt-28 text-center space-y-2 font-serif italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-brand-600">
+          <div className="mt-20 lg:mt-28 xl:-mx-24 text-center space-y-2 font-serif italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-brand-600 [text-wrap:balance]">
             {CLOSING_LINES.map((line) => (
               <p key={line}>{line}</p>
             ))}
