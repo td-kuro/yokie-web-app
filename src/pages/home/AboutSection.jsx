@@ -95,7 +95,7 @@ export default function AboutSection() {
                     {block.number}
                   </span>
                   <h3
-                    className={`relative font-serif italic text-3xl sm:text-4xl font-normal leading-tight text-brand-900 ${layout.heading}`}
+                    className={`relative font-classic text-4xl sm:text-5xl font-medium tracking-wide leading-tight text-brand-900 ${layout.heading}`}
                   >
                     {block.title}
                   </h3>
@@ -116,20 +116,7 @@ export default function AboutSection() {
             })}
           </div>
 
-          <div className="mt-24 lg:mt-32 text-center">
-            <div className="flex items-center justify-center gap-4 mb-6" aria-hidden="true">
-              <span className="h-px w-12 sm:w-20 bg-brand-400" />
-              <i className="fa-solid fa-leaf text-brand-400 text-xs" />
-              <span className="h-px w-12 sm:w-20 bg-brand-400" />
-            </div>
-            <p className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal leading-tight text-brand-900">
-              Scented self-care
-              <br />
-              <span className="italic text-brand-600">for inner peace</span>
-            </p>
-          </div>
-
-          <div className="flex justify-center mt-12 lg:mt-14">
+          <div className="flex justify-center mt-20 lg:mt-24">
             <a
               href="#workshops"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
