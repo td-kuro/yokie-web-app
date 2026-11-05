@@ -25,7 +25,14 @@ const STORY_BLOCKS = [
     titleAccent: 'we do',
     lean: 'right',
     paragraphs: [
-      'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, take a moment, and come make something with us. Every scent we make is a small invitation to slow down.',
+      'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day.',
+      'Join us for intimate, in-person craft workshops hosted in our cosy private apartment studio, or let us bring the creative setup directly to your space with mobile sessions available within 30\u00A0km of the Melbourne CBD.',
+    ],
+    // Short sign-off lines shown on their own beneath the paragraphs.
+    closingLines: [
+      'Pour a warm cup of tea and take a quiet breath.',
+      // Non-breaking space keeps “inner peace” together when the line wraps.
+      'Come create with us for some scented self-care for inner\u00A0peace.',
     ],
   },
 ];
@@ -112,6 +119,13 @@ export default function AboutSection() {
                         {paragraph}
                       </p>
                     ))}
+                    {block.closingLines && (
+                      <div className="pt-3 space-y-2 font-serif italic text-xl sm:text-2xl leading-snug text-brand-600">
+                        {block.closingLines.map((line) => (
+                          <p key={line}>{line}</p>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </article>
               );
