@@ -1,17 +1,7 @@
 import candleImage from '../../assets/candle-decorating.jpg';
 import FloatingBadge from '../../components/ui/FloatingBadge';
-import { siteConfig } from '../../data/siteConfig';
 
-const STORY_BLOCKS = [
-  {
-    title: 'Who we are',
-    text: 'A small Melbourne studio led by Yokie. We hand-pour small-batch candles and host workshops for a handful of people at a time. No rush, no screens, no experience needed.',
-  },
-  {
-    title: 'Inspired by memories, art and a love for handcraft',
-    text: "Every Yokie Scent creation begins with a memory: a fragrance that takes you back, a feeling you want to keep. We blend colour, texture and scent with an artist's eye, then pour each one by hand, slowly and with care. Come and make your own at our table, and take home a small moment of calm to light whenever you need it.",
-  },
-];
+const HIGHLIGHTS = ['No rush', 'No screens', 'No experience needed', 'Melbourne Studio'];
 
 // Laid out like the hero (HeroSection): story on the left, photo card with floating badges on the right.
 export default function AboutSection() {
@@ -27,39 +17,47 @@ export default function AboutSection() {
               </div>
 
               <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-brand-900">
-                About Create with <br className="hidden sm:block" />
-                <span className="italic text-brand-600">Yokie Scent</span>
+                Welcome to <span className="italic text-brand-600">our table</span>
               </h2>
+            </div>
 
-              <p className="text-base sm:text-lg text-brand-700 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-                A gentle reminder to slow down, disconnect from screens, and reconnect with yourself through the
-                grounding power of sensory curation.
+            <blockquote className="border-l-2 border-brand-400 pl-6 font-serif italic text-2xl sm:text-3xl leading-snug text-brand-700">
+              “Handmade with intention, shared amongst friends.”
+            </blockquote>
+
+            <div className="space-y-5 text-base sm:text-lg text-brand-700 font-light leading-relaxed">
+              <p>
+                Yokie Scent isn’t a faceless brand—it’s just us. A small, close-knit circle of creators who love the
+                quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle
+                is hand-poured, and every piece is threaded with care right here in our studio.
+              </p>
+              <p>
+                We wanted to create a space to step away from the noise, get our hands a little messy, and make things
+                that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and
+                come make something with us.
               </p>
             </div>
 
-            <div className="pt-8 border-t border-brand-200/60 space-y-8">
-              {STORY_BLOCKS.map((block) => (
-                <div key={block.title}>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-normal leading-snug text-brand-900 mb-3">
-                    {block.title}
-                  </h3>
-                  <p className="text-base sm:text-lg text-brand-700 font-light leading-relaxed">{block.text}</p>
-                </div>
+            <ul className="grid grid-cols-2 gap-3">
+              {HIGHLIGHTS.map((highlight) => (
+                <li
+                  key={highlight}
+                  className="flex items-center gap-3 bg-white/70 border border-brand-200/60 rounded-xl px-4 py-3 text-sm text-brand-800"
+                >
+                  <span className="w-5 h-5 shrink-0 rounded-full bg-brand-300 text-white flex items-center justify-center text-[10px]">
+                    <i className="fa-solid fa-check" aria-hidden="true" />
+                  </span>
+                  {highlight}
+                </li>
               ))}
-            </div>
+            </ul>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <div className="flex justify-center lg:justify-start pt-2">
               <a
                 href="#workshops"
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg text-center"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
               >
-                Explore Workshops
-              </a>
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-white border border-brand-200 text-brand-800 font-medium hover:bg-brand-100 transition-all text-center"
-              >
-                Say Hello
+                Join a Table <i className="fa-solid fa-arrow-right text-sm" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -86,10 +84,10 @@ export default function AboutSection() {
                 className="-top-6 -left-6 bg-pastel-yellow/90"
               />
               <FloatingBadge
-                icon="fa-seedling"
+                icon="fa-mug-hot"
                 iconColorClass="text-emerald-600"
-                title="No Experience Needed"
-                subtitle="Just bring yourself"
+                title="Grab a Cup of Tea"
+                subtitle="Slow down with us"
                 className="-bottom-6 -right-6 bg-pastel-green/90"
               />
             </div>
