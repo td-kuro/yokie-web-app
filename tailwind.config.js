@@ -28,8 +28,6 @@ export default {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
         serif: ['"Playfair Display"', 'serif'],
-        // Upright Garamond for the About section's story headings.
-        classic: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
       // The prototype used `aspect-4/3`, which Tailwind v3 does not ship by default.
       aspectRatio: {

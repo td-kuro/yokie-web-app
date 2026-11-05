@@ -9,7 +9,8 @@ const OUR_TABLE = {
 const STORY_BLOCKS = [
   {
     number: '01',
-    title: 'Who we are',
+    title: 'Who',
+    titleAccent: 'we are',
     lean: 'left',
     paragraphs: [
       'A small, close-knit circle of creators who love the quiet magic of working with our hands, right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every charm is threaded with care in our studio.',
@@ -20,7 +21,8 @@ const STORY_BLOCKS = [
   },
   {
     number: '02',
-    title: 'What we do',
+    title: 'What',
+    titleAccent: 'we do',
     lean: 'right',
     paragraphs: [
       'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, take a moment, and come make something with us. Every scent we make is a small invitation to slow down.',
@@ -95,9 +97,9 @@ export default function AboutSection() {
                     {block.number}
                   </span>
                   <h3
-                    className={`relative font-classic text-4xl sm:text-5xl font-medium tracking-wide leading-tight text-brand-900 ${layout.heading}`}
+                    className={`relative font-serif text-3xl sm:text-4xl font-normal leading-tight text-brand-900 ${layout.heading}`}
                   >
-                    {block.title}
+                    {block.title} <span className="italic text-brand-600">{block.titleAccent}</span>
                   </h3>
                   <div
                     className={`relative mt-6 max-w-xl space-y-5 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light ${layout.body}`}
