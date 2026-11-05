@@ -28,13 +28,14 @@ const STORY_BLOCKS = [
       'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day.',
       'Join us for intimate, in-person craft workshops hosted in our cosy private apartment studio, or let us bring the creative setup directly to your space with mobile sessions available within 30\u00A0km of the Melbourne CBD.',
     ],
-    // Short sign-off lines shown on their own beneath the paragraphs.
-    closingLines: [
-      'Pour a warm cup of tea and take a quiet breath.',
-      // Non-breaking space keeps “inner peace” together when the line wraps.
-      'Come create with us for some scented self-care for inner\u00A0peace.',
-    ],
   },
+];
+
+// Sign-off lines centred across the section, between the story rows and the button.
+const CLOSING_LINES = [
+  'Pour a warm cup of tea and take a quiet breath.',
+  // Non-breaking space keeps “inner peace” together when the line wraps.
+  'Come create with us for some scented self-care for inner\u00A0peace.',
 ];
 
 // Oversized serif first letter that sits on the first line and rises above it.
@@ -119,20 +120,19 @@ export default function AboutSection() {
                         {paragraph}
                       </p>
                     ))}
-                    {block.closingLines && (
-                      <div className="pt-3 space-y-2 font-serif italic text-xl sm:text-2xl leading-snug text-brand-600">
-                        {block.closingLines.map((line) => (
-                          <p key={line}>{line}</p>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 </article>
               );
             })}
           </div>
 
-          <div className="flex justify-center mt-20 lg:mt-24">
+          <div className="mt-20 lg:mt-28 text-center space-y-2 font-serif italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-brand-600">
+            {CLOSING_LINES.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-12 lg:mt-14">
             <a
               href="#workshops"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
