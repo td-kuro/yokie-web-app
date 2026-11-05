@@ -4,14 +4,25 @@ const STORY_BLOCKS = [
   {
     number: '01',
     title: 'Who we are',
-    text: 'Yokie Scent isn’t a faceless brand—it’s just us. A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio. Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
+    paragraphs: [
+      'Yokie Scent isn’t a faceless brand—it’s just us.',
+      'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
+      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
+    ],
+    largeFirstLetter: true,
   },
   {
     number: '02',
     title: 'What we do',
-    text: 'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
+    paragraphs: [
+      'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
+    ],
   },
 ];
+
+// Oversized serif first letter that sits on the first line and rises above it.
+const LARGE_FIRST_LETTER_CLASSES =
+  'first-letter:font-serif first-letter:text-6xl sm:first-letter:text-7xl first-letter:leading-none first-letter:-mr-1.5 first-letter:text-brand-600';
 
 // Centred heading, numbered story rows, then a wide photo underneath.
 export default function AboutSection() {
@@ -49,9 +60,13 @@ export default function AboutSection() {
                   {block.title}
                 </h3>
               </div>
-              <p className="lg:col-span-8 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light">
-                {block.text}
-              </p>
+              <div className="lg:col-span-8 space-y-5 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light">
+                {block.paragraphs.map((paragraph, index) => (
+                  <p key={paragraph} className={block.largeFirstLetter && index === 0 ? LARGE_FIRST_LETTER_CLASSES : ''}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </article>
           ))}
 
