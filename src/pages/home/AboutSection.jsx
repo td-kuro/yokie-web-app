@@ -10,6 +10,7 @@ const STORY_BLOCKS = [
   {
     number: '01',
     title: 'Who we are',
+    lean: 'left',
     paragraphs: [
       'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
       'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
@@ -20,6 +21,7 @@ const STORY_BLOCKS = [
   {
     number: '02',
     title: 'What we do',
+    lean: 'right',
     paragraphs: [
       'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
     ],
@@ -30,7 +32,24 @@ const STORY_BLOCKS = [
 const LARGE_FIRST_LETTER_CLASSES =
   'first-letter:font-serif first-letter:text-6xl sm:first-letter:text-7xl first-letter:leading-none first-letter:mr-2 first-letter:text-brand-600';
 
-// Centred heading, numbered story rows, then a wide photo underneath.
+// Deliberately uneven placement on desktop: each story leans to one side, its big faint number is tilted,
+// and its text sits at a different offset from its heading. On phones everything stacks.
+const STAGGERED_LAYOUTS = {
+  left: {
+    block: 'lg:w-4/5',
+    number: '-left-1 sm:-left-6 -rotate-6',
+    heading: 'lg:pl-36',
+    body: 'lg:ml-48',
+  },
+  right: {
+    block: 'lg:w-4/5 lg:ml-auto',
+    number: 'right-0 sm:-right-4 rotate-6',
+    heading: 'lg:text-right lg:pr-40',
+    body: 'lg:ml-auto lg:mr-20',
+  },
+};
+
+// Centred heading, the "our table" card, staggered story rows, then a wide photo underneath.
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 lg:py-32 bg-brand-100/60 border-y border-brand-200/60">
@@ -64,28 +83,40 @@ export default function AboutSection() {
             </p>
           </div>
 
-          {STORY_BLOCKS.map((block) => (
-            <article
-              key={block.title}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-10 lg:py-12 border-t border-brand-300/70"
-            >
-              <div className="lg:col-span-4">
-                <span className="block font-serif italic text-brand-500 text-xl mb-2">{block.number}</span>
-                <h3 className="font-serif text-4xl sm:text-5xl font-normal leading-tight text-brand-900">
-                  {block.title}
-                </h3>
-              </div>
-              <div className="lg:col-span-8 space-y-5 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light">
-                {block.paragraphs.map((paragraph, index) => (
-                  <p key={paragraph} className={index === block.largeFirstLetterIndex ? LARGE_FIRST_LETTER_CLASSES : ''}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-            </article>
-          ))}
+          <div className="space-y-20 lg:space-y-28 pt-8">
+            {STORY_BLOCKS.map((block) => {
+              const layout = STAGGERED_LAYOUTS[block.lean];
+              return (
+                <article key={block.title} className={`relative pt-12 sm:pt-16 ${layout.block}`}>
+                  <span
+                    className={`absolute top-0 font-serif italic leading-none text-7xl sm:text-9xl text-brand-300/60 select-none ${layout.number}`}
+                    aria-hidden="true"
+                  >
+                    {block.number}
+                  </span>
+                  <h3
+                    className={`relative font-serif italic text-3xl sm:text-4xl font-normal leading-tight text-brand-900 ${layout.heading}`}
+                  >
+                    {block.title}
+                  </h3>
+                  <div
+                    className={`relative mt-6 max-w-xl space-y-5 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light ${layout.body}`}
+                  >
+                    {block.paragraphs.map((paragraph, index) => (
+                      <p
+                        key={paragraph}
+                        className={index === block.largeFirstLetterIndex ? LARGE_FIRST_LETTER_CLASSES : ''}
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
 
-          <div className="flex justify-center pt-12 border-t border-brand-300/70">
+          <div className="flex justify-center mt-20 lg:mt-24">
             <a
               href="#workshops"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
