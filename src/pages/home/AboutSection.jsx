@@ -3,16 +3,24 @@ import candleImage from '../../assets/candle-decorating.jpg';
 const STORY_BLOCKS = [
   {
     number: '01',
-    title: 'Who we are',
+    // Non-breaking space keeps “our table” together on one line.
+    title: 'So, what is “our table”?',
     paragraphs: [
-      'Yokie Scent isn’t a faceless brand—it’s just us.',
-      'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
-      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
+      'It’s a real table in our studio, and a way of gathering. A few people, warm wax and all the time you need. Pull up a chair and you’re one of us.',
     ],
-    largeFirstLetter: true,
   },
   {
     number: '02',
+    title: 'Who we are',
+    paragraphs: [
+      'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
+      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
+    ],
+    // Index of the paragraph that opens with an oversized first letter.
+    largeFirstLetterIndex: 0,
+  },
+  {
+    number: '03',
     title: 'What we do',
     paragraphs: [
       'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
@@ -22,7 +30,7 @@ const STORY_BLOCKS = [
 
 // Oversized serif first letter that sits on the first line and rises above it.
 const LARGE_FIRST_LETTER_CLASSES =
-  'first-letter:font-serif first-letter:text-6xl sm:first-letter:text-7xl first-letter:leading-none first-letter:-mr-1.5 first-letter:text-brand-600';
+  'first-letter:font-serif first-letter:text-6xl sm:first-letter:text-7xl first-letter:leading-none first-letter:mr-2 first-letter:text-brand-600';
 
 // Centred heading, numbered story rows, then a wide photo underneath.
 export default function AboutSection() {
@@ -62,7 +70,7 @@ export default function AboutSection() {
               </div>
               <div className="lg:col-span-8 space-y-5 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light">
                 {block.paragraphs.map((paragraph, index) => (
-                  <p key={paragraph} className={block.largeFirstLetter && index === 0 ? LARGE_FIRST_LETTER_CLASSES : ''}>
+                  <p key={paragraph} className={index === block.largeFirstLetterIndex ? LARGE_FIRST_LETTER_CLASSES : ''}>
                     {paragraph}
                   </p>
                 ))}
