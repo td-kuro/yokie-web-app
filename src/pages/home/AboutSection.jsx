@@ -3,7 +3,7 @@ import candleImage from '../../assets/candle-decorating.jpg';
 // Shown in its own dark card above the numbered rows.
 const OUR_TABLE = {
   title: 'So, what is “our table”?',
-  text: 'It’s a real table in our studio, and a way of gathering. A few people, warm wax and all the time you need. Pull up a chair and you’re one of us.',
+  text: 'It’s a real table in our studio, and a way of gathering. A few of us, warm wax, a shelf of fragrances, a tray of charms and beads, and all the quiet time you need. Pull up a chair and you’re one of us.',
 };
 
 const STORY_BLOCKS = [
@@ -12,8 +12,8 @@ const STORY_BLOCKS = [
     title: 'Who we are',
     lean: 'left',
     paragraphs: [
-      'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
-      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm. A few of us, warm wax, a shelf of fragrances, a tray of charms and beads, and all the quiet time you need. Pull up a chair and you’re one of us.',
+      'A small, close-knit circle of creators who love the quiet magic of working with our hands, right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every charm is threaded with care in our studio.',
+      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
     ],
     // Index of the paragraph that opens with an oversized first letter.
     largeFirstLetterIndex: 0,
@@ -23,7 +23,7 @@ const STORY_BLOCKS = [
     title: 'What we do',
     lean: 'right',
     paragraphs: [
-      'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us. Pour a candle, blend your own fragrance, or make a beaded charm, a car diffuser or a little door decoration to take home.',
+      'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, take a moment, and come make something with us. Every scent we make is a small invitation to slow down.',
     ],
   },
 ];
