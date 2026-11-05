@@ -13,7 +13,7 @@ const STORY_BLOCKS = [
     lean: 'left',
     paragraphs: [
       'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
-      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
+      'Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm. A few of us, warm wax, a shelf of fragrances, a tray of charms and beads, and all the quiet time you need. Pull up a chair and you’re one of us.',
     ],
     // Index of the paragraph that opens with an oversized first letter.
     largeFirstLetterIndex: 0,
@@ -23,7 +23,7 @@ const STORY_BLOCKS = [
     title: 'What we do',
     lean: 'right',
     paragraphs: [
-      'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
+      'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us. Pour a candle, blend your own fragrance, or make a beaded charm, a car diffuser or a little door decoration to take home.',
     ],
   },
 ];
@@ -116,7 +116,20 @@ export default function AboutSection() {
             })}
           </div>
 
-          <div className="flex justify-center mt-20 lg:mt-24">
+          <div className="mt-24 lg:mt-32 text-center">
+            <div className="flex items-center justify-center gap-4 mb-6" aria-hidden="true">
+              <span className="h-px w-12 sm:w-20 bg-brand-400" />
+              <i className="fa-solid fa-leaf text-brand-400 text-xs" />
+              <span className="h-px w-12 sm:w-20 bg-brand-400" />
+            </div>
+            <p className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal leading-tight text-brand-900">
+              Scented self-care
+              <br />
+              <span className="italic text-brand-600">for inner peace</span>
+            </p>
+          </div>
+
+          <div className="flex justify-center mt-12 lg:mt-14">
             <a
               href="#workshops"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
