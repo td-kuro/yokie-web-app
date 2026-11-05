@@ -1,6 +1,19 @@
 import candleImage from '../../assets/candle-decorating.jpg';
 
-// Single centred column of story text, with a wide photo underneath.
+const STORY_BLOCKS = [
+  {
+    number: '01',
+    title: 'Who we are',
+    text: 'Yokie Scent isn’t a faceless brand—it’s just us. A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio. Whether you’re joining us for an intimate workshop or lighting a candle at home, you aren’t just buying a product; you’re stepping into our corner of slow, creative calm.',
+  },
+  {
+    number: '02',
+    title: 'What we do',
+    text: 'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
+  },
+];
+
+// Centred heading, numbered story rows, then a wide photo underneath.
 export default function AboutSection() {
   return (
     <section id="about" className="py-24 lg:py-32 bg-brand-100/60 border-y border-brand-200/60">
@@ -22,21 +35,27 @@ export default function AboutSection() {
               “Handmade with intention, shared amongst friends.”
             </blockquote>
           </header>
+        </div>
 
-          <div className="mt-12 space-y-6 text-base sm:text-lg text-brand-700 font-light leading-relaxed">
-            <p>
-              Yokie Scent isn’t a faceless brand—it’s just us. A small, close-knit circle of creators who love the quiet
-              magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is
-              hand-poured, and every piece is threaded with care right here in our studio.
-            </p>
-            <p>
-              We wanted to create a space to step away from the noise, get our hands a little messy, and make things
-              that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come
-              make something with us.
-            </p>
-          </div>
+        <div className="max-w-5xl mx-auto mt-16">
+          {STORY_BLOCKS.map((block) => (
+            <article
+              key={block.title}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-10 lg:py-12 border-t border-brand-300/70"
+            >
+              <div className="lg:col-span-4">
+                <span className="block font-serif italic text-brand-500 text-lg mb-2">{block.number}</span>
+                <h3 className="font-serif text-3xl sm:text-4xl font-normal leading-tight text-brand-900">
+                  {block.title}
+                </h3>
+              </div>
+              <p className="lg:col-span-8 text-base sm:text-lg leading-relaxed sm:leading-relaxed text-brand-700 font-light">
+                {block.text}
+              </p>
+            </article>
+          ))}
 
-          <div className="flex justify-center mt-12">
+          <div className="flex justify-center pt-12 border-t border-brand-300/70">
             <a
               href="#workshops"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
