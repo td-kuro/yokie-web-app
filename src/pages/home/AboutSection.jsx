@@ -1,16 +1,14 @@
 import candleImage from '../../assets/candle-decorating.jpg';
 
+// Shown in its own dark card above the numbered rows.
+const OUR_TABLE = {
+  title: 'So, what is “our table”?',
+  text: 'It’s a real table in our studio, and a way of gathering. A few people, warm wax and all the time you need. Pull up a chair and you’re one of us.',
+};
+
 const STORY_BLOCKS = [
   {
     number: '01',
-    // Non-breaking space keeps “our table” together on one line.
-    title: 'So, what is “our table”?',
-    paragraphs: [
-      'It’s a real table in our studio, and a way of gathering. A few people, warm wax and all the time you need. Pull up a chair and you’re one of us.',
-    ],
-  },
-  {
-    number: '02',
     title: 'Who we are',
     paragraphs: [
       'A small, close-knit circle of creators who love the quiet magic of working with our hands right here in Melbourne. Every room spray is blended, every candle is hand-poured, and every piece is threaded with care right here in our studio.',
@@ -20,7 +18,7 @@ const STORY_BLOCKS = [
     largeFirstLetterIndex: 0,
   },
   {
-    number: '03',
+    number: '02',
     title: 'What we do',
     paragraphs: [
       'We wanted to create a space to step away from the noise, get our hands a little messy, and make things that bring a genuine sense of calm back into your day. Grab a cup of tea, slow down for a moment, and come make something with us.',
@@ -57,14 +55,23 @@ export default function AboutSection() {
         </div>
 
         <div className="max-w-5xl mx-auto mt-16">
+          <div className="bg-brand-900 rounded-3xl px-6 py-10 sm:px-12 sm:py-12 mb-12 lg:mb-16 shadow-xl">
+            <h3 className="font-serif italic text-3xl sm:text-4xl font-normal leading-tight text-brand-50 mb-5">
+              {OUR_TABLE.title}
+            </h3>
+            <p className="text-base sm:text-xl leading-loose sm:leading-loose text-brand-100 font-light">
+              {OUR_TABLE.text}
+            </p>
+          </div>
+
           {STORY_BLOCKS.map((block) => (
             <article
               key={block.title}
               className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-10 lg:py-12 border-t border-brand-300/70"
             >
               <div className="lg:col-span-4">
-                <span className="block font-serif italic text-brand-500 text-lg mb-2">{block.number}</span>
-                <h3 className="font-serif text-3xl sm:text-4xl font-normal leading-tight text-brand-900">
+                <span className="block font-serif italic text-brand-500 text-xl mb-2">{block.number}</span>
+                <h3 className="font-serif text-4xl sm:text-5xl font-normal leading-tight text-brand-900">
                   {block.title}
                 </h3>
               </div>
