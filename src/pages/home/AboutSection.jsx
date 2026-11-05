@@ -31,11 +31,11 @@ const STORY_BLOCKS = [
   },
 ];
 
-// Sign-off lines centred across the section, between the story rows and the button.
+// Sign-off sentences centred between the story rows and the button.
+// Each inner array is one sentence; its parts are always shown on separate lines.
 const CLOSING_LINES = [
-  'Pour a warm cup of tea and take a quiet breath.',
-  // Non-breaking space keeps “inner peace” together when the line wraps.
-  'Come create with us and discover scented self-care for inner\u00A0peace.',
+  ['Pour a warm cup of tea and take a quiet breath.'],
+  ['Come create with us and discover', 'scented self-care for inner peace.'],
 ];
 
 // Oversized serif first letter that sits on the first line and rises above it.
@@ -126,9 +126,16 @@ export default function AboutSection() {
             })}
           </div>
 
-          <div className="mt-20 lg:mt-28 xl:-mx-24 text-center space-y-2 font-serif italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-brand-600 [text-wrap:balance]">
-            {CLOSING_LINES.map((line) => (
-              <p key={line}>{line}</p>
+          <div className="mt-20 lg:mt-28 text-center space-y-3 font-serif italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-brand-600 [text-wrap:balance]">
+            {CLOSING_LINES.map((parts) => (
+              <p key={parts.join(' ')}>
+                {parts.map((part, index) => (
+                  <span key={part} className="block">
+                    {part}
+                    {index < parts.length - 1 && ' '}
+                  </span>
+                ))}
+              </p>
             ))}
           </div>
 
