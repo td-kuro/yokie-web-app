@@ -34,8 +34,7 @@ const STORY_BLOCKS = [
 // Sign-off sentences centred between the story rows and the button.
 // Each inner array is one sentence; its parts are always shown on separate lines.
 const CLOSING_LINES = [
-  ['Pour a warm cup of tea and take a quiet breath.'],
-  ['Come create with us and discover', 'scented self-care for inner peace.'],
+  ['A warm cup of tea, a craft table of your own—', 'discover your scented self-care.'],
 ];
 
 // Oversized serif first letter that sits on the first line and rises above it.
