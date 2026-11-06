@@ -1,5 +1,5 @@
 import bespokeDiffuserBoxImage from '../assets/bespoke-diffuser-box.jpg';
-import candleDecoratingImage from '../assets/candle-decorating.jpg';
+import candleWorkshopImage from '../assets/candle-workshop.jpg';
 
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
 // (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard;
@@ -61,9 +61,8 @@ export const workshops = [
       'Craft translucent gel candles with crystal embeds, glitter, and botanical tops. Includes mini heart candles.',
     durationLabel: '90 Mins',
     price: 59,
-    imageUrl: candleDecoratingImage,
-    imageAlt: 'Lit Yokie Scent candle on a wooden table beside books and fresh flowers',
-    imagePosition: 'center 95%',
+    imageUrl: candleWorkshopImage,
+    imageAlt: 'Hand-poured Yokie Scent candle with two lit wicks on a stone surface',
     accent: 'yellow',
     inclusions: [
       '1 Gel Crystal Glass Candle Vessel',
