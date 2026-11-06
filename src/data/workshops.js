@@ -1,4 +1,4 @@
-import bespokeDiffuserBoxImage from '../assets/bespoke-diffuser-box.jpg';
+import diffuserWorkshopImage from '../assets/diffuser-workshop.jpg';
 import candleWorkshopImage from '../assets/candle-workshop.jpg';
 
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
@@ -23,9 +23,9 @@ export const workshops = [
       'Formulate your signature home fragrance from 20+ fine fragrance notes into a 100ml amber glass vessel.',
     durationLabel: '90 Mins',
     price: 65,
-    imageUrl: bespokeDiffuserBoxImage,
-    imageAlt: 'Yokie Scent reed diffuser and mini spray bottle on a marble tray',
-    imagePosition: 'center 70%',
+    imageUrl: diffuserWorkshopImage,
+    imageAlt: 'Yokie Scent 200ml reed diffuser and 10ml room mist casting soft shadows',
+    imagePosition: 'center 85%',
     accent: 'brand',
     inclusions: [
       '100ml Glass Diffuser & Fiber Reeds',
