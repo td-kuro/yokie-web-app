@@ -62,7 +62,7 @@ export const workshops = [
     durationLabel: '90 Mins',
     price: 59,
     imageUrl: candleWorkshopImage,
-    imageAlt: 'Close-up of a hand-poured Yokie Scent two-wick candle in clear glass',
+    imageAlt: 'Close-up of a hand-poured Yokie Scent two-wick candle with an embossed grey label',
     accent: 'yellow',
     inclusions: [
       '1 Gel Crystal Glass Candle Vessel',
