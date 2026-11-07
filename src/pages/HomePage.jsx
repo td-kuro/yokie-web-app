@@ -2,6 +2,7 @@ import { siteConfig } from '../data/siteConfig';
 import AboutSection from './home/AboutSection';
 import GallerySection from './home/GallerySection';
 import HeroSection from './home/HeroSection';
+import ReviewsSection from './home/ReviewsSection';
 import ShopSection from './home/ShopSection';
 import WorkshopsSection from './home/WorkshopsSection';
 
@@ -15,6 +16,7 @@ export default function HomePage() {
       <HeroSection />
       <WorkshopsSection />
       <AboutSection />
+      <ReviewsSection />
       {siteConfig.shopEnabled && <ShopSection />}
       <GallerySection />
     </>

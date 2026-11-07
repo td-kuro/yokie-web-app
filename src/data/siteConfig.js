@@ -12,6 +12,8 @@ export const siteConfig = {
   calendlyUrl: 'https://calendly.com/yokiehome-scentbar',
   // Set to true to show the At-Home DIY Craft Kits section, the cart and the shop links.
   shopEnabled: false,
+  // Your Google "write a review" link. Once set, a "Leave us a Google review" button appears under the reviews.
+  googleReviewUrl: '',
 };
 
 // Includes `link` only while the shop is switched on.
