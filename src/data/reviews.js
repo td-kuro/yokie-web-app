@@ -6,7 +6,7 @@
 //   detail – optional extra line, e.g. the workshop they joined
 //   rating – optional star rating from 1 to 5; leave null to show no stars
 //
-// Empty slots never appear on the live site. If every slot is empty, the whole section stays hidden.
+// Empty slots never appear on the live site. While every slot is empty, the section shows “Reviews coming soon”.
 export const reviews = [
   { id: 'review-1', quote: '', name: '', detail: '', rating: null },
   { id: 'review-2', quote: '', name: '', detail: '', rating: null },

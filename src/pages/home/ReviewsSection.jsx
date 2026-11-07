@@ -1,8 +1,9 @@
 import { reviews } from '../../data/reviews';
 import { siteConfig } from '../../data/siteConfig';
 
-// Empty review slots are shown as placeholders only while previewing locally (`npm run dev`),
-// so the layout can be seen before real reviews are added. They never reach the live site.
+// Until the first real review is added, the section shows a "Reviews coming soon" card instead.
+// Once there is at least one review, any remaining empty slots appear as placeholders only while
+// previewing locally (`npm run dev`), so the layout can be seen. They never reach the live site.
 const SHOW_PLACEHOLDERS = import.meta.env.DEV;
 
 function Stars({ rating }) {
@@ -31,6 +32,28 @@ function ReviewCard({ review }) {
   );
 }
 
+function ComingSoonCard() {
+  return (
+    <div className="max-w-2xl mx-auto bg-brand-50 rounded-2xl border border-brand-100 px-8 py-12 sm:px-12 text-center">
+      <span className="font-serif text-6xl leading-none text-brand-300 block h-8 mb-4" aria-hidden="true">
+        “
+      </span>
+      <p className="font-serif italic text-2xl sm:text-3xl text-brand-900">Reviews coming soon</p>
+      <p className="mt-4 text-base text-brand-700 font-light leading-relaxed">
+        We’re gathering kind words from the guests who’ve joined us at our table. Check back soon to read their
+        stories.
+      </p>
+      <p className="mt-6 text-sm text-brand-600">Joined one of our workshops? We’d love to hear about it.</p>
+      <a
+        href={`mailto:${siteConfig.email}?subject=${encodeURIComponent('My Yokie Scent experience')}`}
+        className="mt-4 w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-brand-800 text-brand-50 font-medium hover:bg-brand-900 transition-all shadow-md hover:shadow-lg"
+      >
+        <i className="fa-solid fa-envelope" aria-hidden="true" /> Share your experience
+      </a>
+    </div>
+  );
+}
+
 function PlaceholderCard() {
   return (
     <div className="rounded-2xl border-2 border-dashed border-brand-300 p-8 flex flex-col items-center justify-center text-center text-brand-600 min-h-[16rem]">
@@ -47,9 +70,8 @@ function PlaceholderCard() {
 
 export default function ReviewsSection() {
   const publishedReviews = reviews.filter((review) => review.quote.trim() && review.name.trim());
-  const emptySlots = SHOW_PLACEHOLDERS ? reviews.length - publishedReviews.length : 0;
-
-  if (publishedReviews.length === 0 && emptySlots === 0) return null;
+  const hasReviews = publishedReviews.length > 0;
+  const emptySlots = hasReviews && SHOW_PLACEHOLDERS ? reviews.length - publishedReviews.length : 0;
 
   return (
     <section id="reviews" className="py-20 lg:py-28 bg-white">
@@ -61,14 +83,18 @@ export default function ReviewsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {publishedReviews.map((review) => (
-            <ReviewCard key={review.id} review={review} />
-          ))}
-          {Array.from({ length: emptySlots }, (_, index) => (
-            <PlaceholderCard key={index} />
-          ))}
-        </div>
+        {hasReviews ? (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {publishedReviews.map((review) => (
+              <ReviewCard key={review.id} review={review} />
+            ))}
+            {Array.from({ length: emptySlots }, (_, index) => (
+              <PlaceholderCard key={index} />
+            ))}
+          </div>
+        ) : (
+          <ComingSoonCard />
+        )}
 
         {siteConfig.googleReviewUrl && (
           <div className="flex justify-center mt-12">
