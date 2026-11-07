@@ -22,7 +22,7 @@ export default function PopUpEventCard({ event }) {
       <div>
         <h4 className="font-medium text-sm text-brand-900">{event.title}</h4>
         <p className="text-xs text-brand-600">
-          {event.location} • {event.timeRange}
+          {event.location} • <span className="whitespace-nowrap">{event.timeRange}</span>
         </p>
         {event.tag && (
           <span className={`inline-block mt-1 text-[10px] px-2 py-0.5 rounded ${toneClass}`}>{event.tag}</span>

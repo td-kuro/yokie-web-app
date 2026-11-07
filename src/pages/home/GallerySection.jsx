@@ -35,7 +35,7 @@ export default function GallerySection() {
           <div className="lg:col-span-5 space-y-6">
             <div>
               <span className="eyebrow">Find Us In Person</span>
-              <h2 className="font-serif text-3xl font-normal text-brand-900 mt-1">Pop-Up Market Calendar</h2>
+              <h2 className="font-serif text-3xl font-normal text-brand-900 mt-1">Pop-Up Event Calendar</h2>
             </div>
 
             <LoadErrorMessage status={eventsStatus}>
