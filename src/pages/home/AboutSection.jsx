@@ -1,4 +1,4 @@
-import candleImage from '../../assets/candle-decorating.jpg';
+import tableImage from '../../assets/about-table.jpg';
 
 // Shown in its own dark card above the numbered rows.
 const OUR_TABLE = {
@@ -149,13 +149,12 @@ export default function AboutSection() {
         </div>
 
         <div className="max-w-5xl mx-auto mt-16 lg:mt-20 glass-card rounded-3xl p-4 sm:p-6 shadow-xl">
-          <div className="aspect-4/5 sm:aspect-3/2 rounded-2xl bg-brand-100 overflow-hidden">
+          <div className="aspect-4/3 sm:aspect-video rounded-2xl bg-brand-100 overflow-hidden">
             <img
-              src={candleImage}
-              alt="Hand-poured Yokie Scent candle lit on a wooden table beside books and fresh flowers"
+              src={tableImage}
+              alt="A Yokie Scent workshop table set with blue trays, beakers and fragrance bottles in soft afternoon light"
               loading="lazy"
               className="w-full h-full object-cover"
-              style={{ objectPosition: 'center 88%' }}
             />
           </div>
         </div>
