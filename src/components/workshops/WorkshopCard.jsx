@@ -36,6 +36,11 @@ export default function WorkshopCard({ workshop }) {
           <span className="absolute top-2 left-2 bg-white/90 text-brand-900 text-[10px] font-bold px-2.5 py-1 rounded-md">
             {workshop.durationLabel}
           </span>
+          {workshop.launchPrice && (
+            <span className="absolute top-2 right-2 bg-pastel-yellow text-brand-800 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md">
+              Launch price
+            </span>
+          )}
         </div>
         <h3 className="font-serif text-lg font-semibold text-brand-900 mb-2">{workshop.title}</h3>
         <p className="text-xs text-brand-700 leading-relaxed mb-4">{workshop.description}</p>
@@ -50,8 +55,8 @@ export default function WorkshopCard({ workshop }) {
 
       <div>
         <div className="flex items-center justify-between pt-4 border-t border-brand-200 mb-4">
-          <span className="text-xs text-brand-600">Per Person</span>
-          <span className="font-serif text-xl font-bold text-brand-900">{formatAud(workshop.price)}</span>
+          <span className="text-xs text-brand-600 whitespace-nowrap">Per Person</span>
+          <span className="font-serif text-xl font-bold text-brand-900 whitespace-nowrap">{formatAud(workshop.price)}</span>
         </div>
         <button type="button" onClick={handleBook} className="w-full py-2.5 rounded-xl btn-dark text-xs">
           Book Session

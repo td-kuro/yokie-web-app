@@ -45,7 +45,7 @@ service cloud.firestore {
         && isText(data.workshopId, 100)
         && isText(data.workshopTitle, 200)
         && data.pricePerPerson is number && data.pricePerPerson >= 0
-        && isWholeNumberBetween(data.guests, 1, 10)
+        && isWholeNumberBetween(data.guests, 2, 6)
         && data.estimatedTotal is number && data.estimatedTotal >= 0
         && isText(data.fullName, 120)
         && isEmail(data.email)

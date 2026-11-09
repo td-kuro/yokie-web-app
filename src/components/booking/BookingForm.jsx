@@ -108,6 +108,13 @@ export default function BookingForm({ workshop, onBooked }) {
           onChange={handleChange}
         />
       </div>
+      <p className="text-[11px] text-brand-600 -mt-2">
+        {BOOKING_GUEST_LIMITS.min}–{BOOKING_GUEST_LIMITS.max} guests per session. Groups of 7–8?{' '}
+        <a href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(`Group enquiry: ${workshop.title}`)}`} className="underline">
+          Email us
+        </a>
+        .
+      </p>
 
       <TextField
         label="Email Address"
@@ -124,6 +131,10 @@ export default function BookingForm({ workshop, onBooked }) {
         <span className="text-xs text-brand-600">Total Payable:</span>
         <span className="font-serif text-2xl font-bold text-brand-900">{formatAud(total)}</span>
       </div>
+
+      <p className="text-[11px] text-brand-600 leading-relaxed">
+        Full payment is taken at booking. Free reschedule or full refund with at least 48 hours’ notice.
+      </p>
 
       <button type="submit" className="w-full py-3 rounded-xl btn-dark text-xs">
         Continue to Choose a Time

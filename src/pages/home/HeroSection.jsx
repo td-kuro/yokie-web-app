@@ -1,10 +1,11 @@
 import heroImage from '../../assets/noel-night-christmas-2026.jpg';
 import FloatingBadge from '../../components/ui/FloatingBadge';
+import { workshops } from '../../data/workshops';
 import { useBooking } from '../../hooks/useBooking';
 import { formatAud } from '../../utils/formatters';
 
-// Quick-book target for the hero card. Keep in sync with the matching workshop in src/data/workshops.js.
-const FEATURED_WORKSHOP = { id: 'liquid-diffuser-blending', title: 'Bespoke Liquid Diffuser Blending', price: 65 };
+// The workshop shown (and quick-booked) in the hero card. Change the id to feature a different workshop.
+const FEATURED_WORKSHOP = workshops.find((workshop) => workshop.id === 'christmas-heart-tealight');
 
 const TRUST_HIGHLIGHTS = [
   { value: '100%', label: 'Skin Safe Oils' },
@@ -31,8 +32,8 @@ export default function HeroSection() {
             </h1>
 
             <p className="text-base sm:text-lg text-brand-700 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-              Step into an immersive tactile workshop experience. Blend custom liquid diffusers, formulate wearable
-              solid perfume charms, and decorate aesthetic candles with intention.
+              Step into an immersive, hands-on workshop. Blend your own diffuser, mix a perfume for your mood, and pour
+              candles with intention.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -76,17 +77,22 @@ export default function HeroSection() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-serif text-xl font-medium text-brand-900">Bespoke Reed Diffuser</h3>
+                    <h3 className="font-serif text-xl font-medium text-brand-900">{FEATURED_WORKSHOP.title}</h3>
                     <span className="text-brand-600 font-bold whitespace-nowrap">
                       {formatAud(FEATURED_WORKSHOP.price)}
                     </span>
                   </div>
-                  <p className="text-xs text-brand-700 leading-relaxed">
-                    Mix, measure, and pour custom fragrance notes into amber glass vessels with natural fiber reeds.
-                  </p>
+                  <p className="text-xs text-brand-700 leading-relaxed">{FEATURED_WORKSHOP.description}</p>
                   <button
                     type="button"
-                    onClick={() => openBooking(FEATURED_WORKSHOP)}
+                    onClick={() =>
+                      openBooking({
+                        id: FEATURED_WORKSHOP.id,
+                        title: FEATURED_WORKSHOP.bookingTitle ?? FEATURED_WORKSHOP.title,
+                        price: FEATURED_WORKSHOP.price,
+                        calendlyUrl: FEATURED_WORKSHOP.calendlyUrl,
+                      })
+                    }
                     className="w-full py-3 rounded-xl bg-brand-200 text-brand-900 font-medium hover:bg-brand-300 transition-colors text-sm"
                   >
                     Quick Book Experience
@@ -97,8 +103,8 @@ export default function HeroSection() {
               <FloatingBadge
                 icon="fa-heart"
                 iconColorClass="text-pink-500"
-                title="Mini Heart Candles"
-                subtitle="Decorate with Botanicals"
+                title="Christmas Workshop"
+                subtitle="Spell LOVE or XMAS"
                 className="-top-6 -left-6 bg-pastel-pink/90"
               />
               {/* Hidden for now, along with the Car Vent workshop (see src/data/workshops.js).
