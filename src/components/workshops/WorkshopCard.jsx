@@ -18,6 +18,7 @@ export default function WorkshopCard({ workshop }) {
       id: workshop.id,
       title: workshop.bookingTitle ?? workshop.title,
       price: workshop.price,
+      bookingUrls: workshop.bookingUrls,
       calendlyUrl: workshop.calendlyUrl,
     });
   }

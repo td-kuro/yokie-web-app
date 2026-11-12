@@ -90,6 +90,7 @@ export default function HeroSection() {
                         id: FEATURED_WORKSHOP.id,
                         title: FEATURED_WORKSHOP.bookingTitle ?? FEATURED_WORKSHOP.title,
                         price: FEATURED_WORKSHOP.price,
+                        bookingUrls: FEATURED_WORKSHOP.bookingUrls,
                         calendlyUrl: FEATURED_WORKSHOP.calendlyUrl,
                       })
                     }

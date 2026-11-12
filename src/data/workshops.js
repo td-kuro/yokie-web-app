@@ -5,8 +5,10 @@ import candleWorkshopImage from '../assets/candle-workshop.jpg';
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
 // (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard;
 // optional `imagePosition` (CSS object-position) adjusts how the image is cropped.
-// Optional `calendlyUrl` is the workshop's own Calendly event link (e.g. https://calendly.com/yokiehome-scentbar/<event>);
-// without it, booking opens the main Calendly page from src/data/siteConfig.js.
+// Optional `bookingUrls` maps a group size to its own Cal.com (or Calendly) booking link, e.g. { 1: '...', 2: '...' },
+// so each size can carry its own price. Otherwise `calendlyUrl` is the workshop's single Calendly event link
+// (e.g. https://calendly.com/yokiehome-scentbar/<event>); without either, booking opens the main Calendly page
+// from src/data/siteConfig.js.
 // `launchPrice: true` shows a "Launch price" tag next to the price; remove it when the price changes.
 
 export const workshopCategories = [
@@ -25,6 +27,15 @@ export const workshops = [
     durationLabel: '60–75 Mins',
     price: 68,
     launchPrice: true,
+    // Cal.com event per group size; each one charges the full total (price × guests).
+    bookingUrls: {
+      1: 'https://cal.com/yokie-htovur/xmas-tealight',
+      2: 'https://cal.com/yokie-htovur/xmas-tealight-2',
+      3: 'https://cal.com/yokie-htovur/xmas-tealight-3',
+      4: 'https://cal.com/yokie-htovur/xmas-tealight-4',
+      5: 'https://cal.com/yokie-htovur/xmas-tealight-5',
+      6: 'https://cal.com/yokie-htovur/xmas-tealight-6',
+    },
     imageUrl: christmasHeartImage,
     imageAlt: 'Heart-shaped tealights topped with letters spelling LOVE and XMAS on a stone tray',
     imagePosition: 'center 80%',
@@ -43,6 +54,7 @@ export const workshops = [
     durationLabel: '90 Mins',
     price: 115,
     launchPrice: true,
+    calendlyUrl: 'https://calendly.com/yokiehome-scentbar/bespoke-diffuser-blending',
     imageUrl: diffuserWorkshopImage,
     imageAlt: 'Yokie Scent 200ml reed diffuser and 10ml room mist casting soft shadows',
     imagePosition: 'center 85%',
@@ -61,6 +73,7 @@ export const workshops = [
     durationLabel: '2 Hrs',
     price: 95,
     launchPrice: true,
+    calendlyUrl: 'https://calendly.com/yokiehome-scentbar/mood-perfume-scented-keychain',
     // Placeholder photo until a real perfume and keychain photo is ready.
     imageUrl: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&q=80&w=500',
     imageAlt: 'Perfume bottles',
@@ -80,6 +93,7 @@ export const workshops = [
     durationLabel: '2.5 Hrs',
     price: 150,
     launchPrice: true,
+    calendlyUrl: 'https://calendly.com/yokiehome-scentbar/30min',
     imageUrl: candleWorkshopImage,
     imageAlt: 'Close-up of a hand-poured Yokie Scent two-wick candle with an embossed grey label',
     accent: 'yellow',
@@ -107,5 +121,6 @@ export const workshops = [
   // },
 ];
 
-// Bookings are for 2–6 guests; groups of 7–8 are by enquiry (see src/data/bookingPolicies.js).
-export const BOOKING_GUEST_LIMITS = { min: 2, max: 6 };
+// Bookings are for 1–6 guests; groups of 7–8 are by enquiry (see src/data/bookingPolicies.js).
+// Keep in step with the guests check in firestore.rules.
+export const BOOKING_GUEST_LIMITS = { min: 1, max: 6 };

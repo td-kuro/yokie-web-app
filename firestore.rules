@@ -37,20 +37,31 @@ service cloud.firestore {
       return isText(value, 300) && value.matches('^https://api[.]calendly[.]com/.+$');
     }
 
+    function isCalBookingUid(value) {
+      return isText(value, 100) && value.matches('^[A-Za-z0-9_-]+$');
+    }
+
+    // Either a Cal.com booking (calBookingUid) or a Calendly one (event + invitee URIs).
+    function hasSchedulerReference(data) {
+      let common = [
+        'workshopId', 'workshopTitle', 'pricePerPerson', 'guests', 'estimatedTotal',
+        'fullName', 'email', 'status', 'createdAt'
+      ];
+      return (hasExactly(data, common.concat(['calBookingUid'])) && isCalBookingUid(data.calBookingUid))
+        || (hasExactly(data, common.concat(['calendlyEventUri', 'calendlyInviteeUri']))
+          && isCalendlyUri(data.calendlyEventUri)
+          && isCalendlyUri(data.calendlyInviteeUri));
+    }
+
     function isValidBooking(data) {
-      return hasExactly(data, [
-          'workshopId', 'workshopTitle', 'pricePerPerson', 'guests', 'estimatedTotal',
-          'fullName', 'email', 'calendlyEventUri', 'calendlyInviteeUri', 'status', 'createdAt'
-        ])
+      return hasSchedulerReference(data)
         && isText(data.workshopId, 100)
         && isText(data.workshopTitle, 200)
         && data.pricePerPerson is number && data.pricePerPerson >= 0
-        && isWholeNumberBetween(data.guests, 2, 6)
+        && isWholeNumberBetween(data.guests, 1, 6)
         && data.estimatedTotal is number && data.estimatedTotal >= 0
         && isText(data.fullName, 120)
         && isEmail(data.email)
-        && isCalendlyUri(data.calendlyEventUri)
-        && isCalendlyUri(data.calendlyInviteeUri)
         && data.status == 'pending'
         && data.createdAt == request.time;
     }

@@ -24,7 +24,7 @@ export default function WorkshopsSection() {
           <span className="eyebrow mb-2">Hands-On Experiences</span>
           <h2 className="font-serif text-3xl sm:text-4xl font-normal text-brand-900">Our Signature Studio Workshops</h2>
           <p className="text-brand-700 mt-3 font-light">
-            Choose a session below and book a table for 2–6 guests, from a catch-up with friends to a small private
+            Choose a session below and book a table for 1–6 guests, from a catch-up with friends to a small private
             celebration.
           </p>
 

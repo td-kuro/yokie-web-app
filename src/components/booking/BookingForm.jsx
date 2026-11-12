@@ -5,8 +5,10 @@ import { useFormFields } from '../../hooks/useFormFields';
 import { useSubmitAction } from '../../hooks/useSubmitAction';
 import { createWorkshopBooking } from '../../services/bookingService';
 import { formatAud } from '../../utils/formatters';
+import { isCalUrl } from '../../services/calcom';
 import { parseGuestCount } from '../../utils/pricing';
 import { TextField } from '../ui/FormField';
+import CalScheduler from './CalScheduler';
 import CalendlyScheduler from './CalendlyScheduler';
 
 const INITIAL_VALUES = {
@@ -15,9 +17,15 @@ const INITIAL_VALUES = {
   email: '',
 };
 
+/** The workshop's link for this group size, else its single link, else the main booking page. */
+function getBookingUrl(workshop, guestCount) {
+  return workshop.bookingUrls?.[guestCount] ?? workshop.calendlyUrl ?? siteConfig.calendlyUrl;
+}
+
 /**
- * Two steps: the visitor enters their details once, then picks a time in Calendly with
- * those details pre-filled. The booking is saved once Calendly confirms it.
+ * Two steps: the visitor enters their details once, then picks a time in Cal.com or Calendly
+ * (whichever the workshop's link points to) with those details pre-filled. The booking is saved
+ * once the scheduler confirms it.
  */
 export default function BookingForm({ workshop, onBooked }) {
   const { values, handleChange } = useFormFields(INITIAL_VALUES);
@@ -26,21 +34,28 @@ export default function BookingForm({ workshop, onBooked }) {
   const total = guestCount * workshop.price;
   const fullName = values.fullName.trim();
   const email = values.email.trim();
+  const bookingUrl = getBookingUrl(workshop, guestCount);
 
-  const { submit, isSubmitting } = useSubmitAction(createWorkshopBooking, {
-    successMessage: "You're booked! Calendly has emailed your confirmation and calendar invite.",
+  const saveBooking = useSubmitAction(createWorkshopBooking, {
+    successMessage: "You're booked! Check your email for your confirmation and calendar invite.",
     errorMessage:
-      "Your session is booked and Calendly has emailed your confirmation, but we couldn't save your guest details. We'll be in touch.",
+      "Your session is booked and you'll get a confirmation email, but we couldn't save your guest details. We'll be in touch.",
     onSuccess: onBooked,
   });
+  // Paid Cal.com events: the booking exists, but the visitor still has to pay in the calendar.
+  const saveBookingBeforePayment = useSubmitAction(createWorkshopBooking, {
+    successMessage: 'Almost done! Complete your payment below to confirm your place.',
+    errorMessage: "Please complete your payment below to confirm your place. We couldn't save your guest details, so we'll be in touch.",
+  });
+  const isSubmitting = saveBooking.isSubmitting || saveBookingBeforePayment.isSubmitting;
 
   function handleDetailsSubmit(event) {
     event.preventDefault();
     setStep('schedule');
   }
 
-  function handleScheduled(payload) {
-    submit({
+  function bookingDetails() {
+    return {
       workshopId: workshop.id,
       workshopTitle: workshop.title,
       pricePerPerson: workshop.price,
@@ -48,6 +63,19 @@ export default function BookingForm({ workshop, onBooked }) {
       estimatedTotal: total,
       fullName,
       email,
+    };
+  }
+
+  function handleCalScheduled(booking) {
+    const details = { ...bookingDetails(), calBookingUid: booking.uid };
+    // Only close the form when Cal.com says no payment is due; otherwise its payment form is next.
+    if (booking.paymentRequired === false) saveBooking.submit(details);
+    else saveBookingBeforePayment.submit(details);
+  }
+
+  function handleCalendlyScheduled(payload) {
+    saveBooking.submit({
+      ...bookingDetails(),
       calendlyEventUri: payload.event.uri,
       calendlyInviteeUri: payload.invitee.uri,
     });
@@ -71,13 +99,23 @@ export default function BookingForm({ workshop, onBooked }) {
           </button>
         </div>
 
-        <CalendlyScheduler
-          url={workshop.calendlyUrl ?? siteConfig.calendlyUrl}
-          name={fullName}
-          email={email}
-          guestsAnswer={String(guestCount)}
-          onScheduled={handleScheduled}
-        />
+        {isCalUrl(bookingUrl) ? (
+          <CalScheduler
+            key={bookingUrl}
+            url={bookingUrl}
+            name={fullName}
+            email={email}
+            onScheduled={handleCalScheduled}
+          />
+        ) : (
+          <CalendlyScheduler
+            url={bookingUrl}
+            name={fullName}
+            email={email}
+            guestsAnswer={String(guestCount)}
+            onScheduled={handleCalendlyScheduled}
+          />
+        )}
 
         {isSubmitting && <p className="text-xs text-brand-600 text-center">Saving your booking…</p>}
       </div>

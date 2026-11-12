@@ -1,10 +1,10 @@
 // "Good to know before you book" panel under the workshops (src/pages/home/WorkshopsSection.jsx).
-// Keep in step with the Calendly event settings and your Terms and Conditions.
+// Keep in step with the Cal.com / Calendly event settings and your Terms and Conditions.
 export const bookingPolicies = [
   {
     icon: 'fa-user-group',
     title: 'Group size',
-    text: '2–6 guests per session. Groups of 7–8 are welcome by enquiry.',
+    text: '1–6 guests per booking. Groups of 7–8 are welcome by enquiry.',
   },
   {
     icon: 'fa-credit-card',

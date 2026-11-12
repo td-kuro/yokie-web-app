@@ -8,7 +8,7 @@ export const siteConfig = {
   instagramHandle: '@yokie.scent',
   // Set to the full profile URL to turn the gallery's Instagram tile into a link.
   instagramUrl: '',
-  // Default booking calendar. A workshop's own `calendlyUrl` (src/data/workshops.js) takes priority.
+  // Default booking calendar. A workshop's own `bookingUrls` or `calendlyUrl` (src/data/workshops.js) take priority.
   calendlyUrl: 'https://calendly.com/yokiehome-scentbar',
   // Set to true to show the At-Home DIY Craft Kits section, the cart and the shop links.
   shopEnabled: false,
