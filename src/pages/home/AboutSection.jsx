@@ -25,7 +25,7 @@ const STORY_BLOCKS = [
     titleAccent: 'we do',
     lean: 'right',
     paragraphs: [
-      'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day.',
+      'We created a space where you can step away from the noise, get your hands a little messy, and make things that bring a genuine sense of calm back into your day. We’re currently focusing on small groups for a more interactive experience, with a maximum of 6 people per group class.',
       'Join us for intimate, in-person craft workshops hosted in our cosy private apartment studio, or let us bring the creative setup directly to your space with mobile sessions available within 30\u00A0km of the Melbourne CBD.',
     ],
   },
