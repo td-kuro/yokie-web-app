@@ -1,6 +1,7 @@
 import christmasHeartImage from '../assets/noel-night-christmas-2026.jpg';
 import diffuserWorkshopImage from '../assets/diffuser-workshop.jpg';
 import candleWorkshopImage from '../assets/candle-workshop.jpg';
+import scentedKeychainImage from '../assets/scented-keychain-workshop.jpg';
 
 // Local workshop catalogue. Firestore documents in the `workshops` collection use the same shape
 // (plus an optional numeric `sortOrder`). `accent` picks the image background colour in WorkshopCard;
@@ -82,9 +83,10 @@ export const workshops = [
     price: 95,
     launchPrice: true,
     calendlyUrl: 'https://calendly.com/yokiehome-scentbar/mood-perfume-scented-keychain',
-    // Placeholder photo until a real perfume and keychain photo is ready.
-    imageUrl: 'https://images.unsplash.com/photo-1615397349754-cfa2066a298e?auto=format&fit=crop&q=80&w=500',
-    imageAlt: 'Perfume bottles',
+    imageUrl: scentedKeychainImage,
+    imageAlt: 'Pink beaded charm keychain with a heart clip and fluffy scent ball, beside a Scented Blend perfume spray',
+    // Crops out the poster text above and below the keychain.
+    imagePosition: 'center 44%',
     accent: 'pink',
     inclusions: [
       '10ml Perfume Spray Blended to Your Mood',

@@ -6,7 +6,7 @@ export const bookingPolicies = [
   {
     icon: 'fa-user-group',
     title: 'Group size',
-    text: `1–6 guests per booking. We’re currently focusing on small groups for a more interactive experience. For more than 6 people, please email us at ${siteConfig.email} to enquire.`,
+    text: `1–6 guests per booking. Larger groups, please email ${siteConfig.email}.`,
   },
   {
     icon: 'fa-credit-card',
