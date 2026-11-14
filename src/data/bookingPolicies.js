@@ -11,12 +11,12 @@ export const bookingPolicies = [
   {
     icon: 'fa-credit-card',
     title: 'Payment',
-    text: 'Payment is taken when you send your booking request. If we can’t confirm your booking, you’ll get a full refund.',
+    text: 'Payment is taken when you send your booking request, and we’ll confirm your booking by email. If we can’t confirm it, you’ll get a full refund.',
   },
   {
     icon: 'fa-calendar-check',
     title: 'Changes & refunds',
-    text: 'Reschedule for free or get a full refund with at least 48 hours’ notice. Within 48 hours we can’t offer a refund, but you’re welcome to reschedule or transfer your booking to someone else.',
+    text: 'Cancel with at least 48 hours’ notice for a full refund to the card you paid with, or reschedule for free. Within 48 hours we can’t offer a refund, but you’re welcome to reschedule or transfer your booking to someone else.',
   },
   {
     icon: 'fa-clock',
