@@ -11,6 +11,7 @@ import scentedKeychainImage from '../assets/scented-keychain-workshop.jpg';
 // (e.g. https://calendly.com/yokiehome-scentbar/<event>); without either, booking opens the main Calendly page
 // from src/data/siteConfig.js.
 // `launchPrice: true` shows a "Launch price" tag next to the price; remove it when the price changes.
+// `comingSoon: true` shows the workshop but replaces its Book Session button with a disabled "Coming Soon" one.
 
 export const workshopCategories = [
   { id: 'all', label: 'All Experiences' },
@@ -82,6 +83,7 @@ export const workshops = [
     durationLabel: '2 Hrs',
     price: 95,
     launchPrice: true,
+    comingSoon: true,
     calendlyUrl: 'https://calendly.com/yokiehome-scentbar/mood-perfume-scented-keychain',
     imageUrl: scentedKeychainImage,
     imageAlt: 'Pink beaded charm keychain with a heart clip and fluffy scent ball, beside a Scented Blend perfume spray',

@@ -59,8 +59,13 @@ export default function WorkshopCard({ workshop }) {
           <span className="text-xs text-brand-600 whitespace-nowrap">Per Person</span>
           <span className="font-serif text-xl font-bold text-brand-900 whitespace-nowrap">{formatAud(workshop.price)}</span>
         </div>
-        <button type="button" onClick={handleBook} className="w-full py-2.5 rounded-xl btn-dark text-xs">
-          Book Session
+        <button
+          type="button"
+          onClick={handleBook}
+          disabled={workshop.comingSoon}
+          className="w-full py-2.5 rounded-xl btn-dark text-xs"
+        >
+          {workshop.comingSoon ? 'Coming Soon' : 'Book Session'}
         </button>
       </div>
     </article>
