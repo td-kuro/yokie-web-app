@@ -43,7 +43,7 @@ export const workshops = [
     imageAlt: 'Heart-shaped tealights topped with letters spelling MERRY XMAS on a marble tray',
     accent: 'yellow',
     inclusions: [
-      '4–6 Heart-Shaped Tealights',
+      '4 Heart-Shaped Tealights',
       'Letter Toppings: LOVE, XMAS or Your Own Message',
       'Japanese Tea & a Light Seasonal Snack',
     ],
