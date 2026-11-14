@@ -54,7 +54,15 @@ export const workshops = [
     durationLabel: '90 Mins',
     price: 115,
     launchPrice: true,
-    calendlyUrl: 'https://calendly.com/yokiehome-scentbar/bespoke-diffuser-blending',
+    // Cal.com event per group size; each one charges the full total (price × guests).
+    bookingUrls: {
+      1: 'https://cal.com/yokie-htovur/bespoke-diffuser-blending',
+      2: 'https://cal.com/yokie-htovur/bespoke-diffuser-blending-2-people',
+      3: 'https://cal.com/yokie-htovur/bespoke-diffuser-blending-3-people',
+      4: 'https://cal.com/yokie-htovur/bespoke-diffuser-blending-4-people',
+      5: 'https://cal.com/yokie-htovur/bespoke-diffuser-blending-5-people',
+      6: 'https://cal.com/yokie-htovur/bespoke-diffuser-blending-6-people',
+    },
     imageUrl: diffuserWorkshopImage,
     imageAlt: 'Yokie Scent 200ml reed diffuser and 10ml room mist casting soft shadows',
     imagePosition: 'center 85%',
@@ -93,7 +101,15 @@ export const workshops = [
     durationLabel: '2.5 Hrs',
     price: 150,
     launchPrice: true,
-    calendlyUrl: 'https://calendly.com/yokiehome-scentbar/30min',
+    // Cal.com event per group size; each one charges the full total (price × guests).
+    bookingUrls: {
+      1: 'https://cal.com/yokie-htovur/signature-800ml-candle-studio',
+      2: 'https://cal.com/yokie-htovur/signature-800ml-candle-studio-2-person',
+      3: 'https://cal.com/yokie-htovur/signature-800ml-candle-studio-3-person',
+      4: 'https://cal.com/yokie-htovur/signature-800ml-candle-studio-4-person',
+      5: 'https://cal.com/yokie-htovur/signature-800ml-candle-studio-5person',
+      6: 'https://cal.com/yokie-htovur/signature-800ml-candle-studio-6-person',
+    },
     imageUrl: candleWorkshopImage,
     imageAlt: 'Close-up of a hand-poured Yokie Scent two-wick candle with an embossed grey label',
     accent: 'yellow',
