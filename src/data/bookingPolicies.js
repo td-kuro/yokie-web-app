@@ -22,9 +22,9 @@ export const bookingPolicies = [
     text: 'Please arrive 10 minutes early. If you arrive more than 15 minutes late, you may not be able to complete the experience.',
   },
   {
-    icon: 'fa-gift',
-    title: 'Group perks',
-    text: 'Book for 4–5 guests and the organiser takes home a mini heart candle. Book for 6 and the organiser receives a small gift or a free session.',
+    icon: 'fa-car',
+    title: 'Travel fee',
+    text: 'Sessions outside the CBD include a travel fee: $20 up to 10 km, $30 for 10–20 km and $50 for more than 20 km.',
   },
   {
     icon: 'fa-leaf',
