@@ -26,7 +26,7 @@ export const workshops = [
     id: 'christmas-heart-tealight',
     category: 'candles',
     title: 'Christmas Heart Tealight Workshop',
-    description: 'Make heart tealights topped with letters to spell LOVE or XMAS.',
+    description: 'Make heart tealights in the colours of your choice, topped with letters to spell LOVE or XMAS.',
     durationLabel: '60–75 Mins',
     price: 68,
     launchPrice: true,

@@ -8,9 +8,9 @@ import { formatAud } from '../../utils/formatters';
 const FEATURED_WORKSHOP = workshops.find((workshop) => workshop.id === 'christmas-heart-tealight');
 
 const TRUST_HIGHLIGHTS = [
-  { value: '100%', label: 'Skin Safe Oils' },
-  { value: '1,200+', label: 'Guests Welcomed' },
-  { value: '4.9 ★', label: 'Event Rating' },
+  { value: '100%', label: 'IFRA Safe' },
+  { value: '60+', label: 'Guests Welcomed' },
+  { value: '4 ★', label: 'Event Rating' },
 ];
 
 export default function HeroSection() {
@@ -23,7 +23,7 @@ export default function HeroSection() {
           <div className="lg:col-span-7 space-y-8 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100/80 border border-brand-200/60 text-brand-800 text-xs sm:text-sm font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-              Melbourne Pop-Up & Global Workshop Kits
+              Melbourne Pop-Up & Local Workshops
             </div>
 
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-tight text-brand-900">
