@@ -5,7 +5,8 @@ let namespaceCount = 0;
 
 /**
  * Inline Cal.com scheduler with the visitor's name and email already filled in.
- * `onScheduled` receives Cal.com's `bookingSuccessfulV2` data: `{ uid, paymentRequired, ... }`.
+ * `onScheduled` receives Cal.com's `bookingSuccessfulV2` data: `{ uid, status, paymentRequired, ... }`,
+ * where `status` is 'PENDING' for event types that require the host's confirmation.
  * For paid event types it fires once the booking is created, just before Cal.com shows its
  * payment form, so keep this scheduler on screen until the visitor has paid.
  * Render it with `key={url}` so a new link starts with a fresh loading state.
@@ -32,24 +33,31 @@ export default function CalScheduler({ url, name, email, onScheduled }) {
       bookingSuccessfulV2: (event) => onScheduledRef.current(event.detail.data),
     };
 
-    loadCalEmbed().catch((error) => {
-      console.error(error);
-      if (!cancelled) setLoadFailed(true);
-    });
+    let cal;
 
-    // Queued until the embed script arrives (see loadCalEmbed).
-    window.Cal('init', namespace, { origin: CAL_ORIGIN });
-    const cal = window.Cal.ns[namespace];
-    Object.entries(listeners).forEach(([action, callback]) => cal('on', { action, callback }));
-    cal('inline', {
-      calLink: toCalLink(url),
-      elementOrSelector: container,
-      config: { name, email, layout: 'month_view', theme: 'light' },
-    });
+    // Only create the calendar once the embed script has loaded, and only if this render is still
+    // current. Queuing it earlier let a calendar from an already-closed render appear later with no
+    // listeners, so its bookings never reached onScheduled.
+    loadCalEmbed()
+      .then((Cal) => {
+        if (cancelled) return;
+        Cal('init', namespace, { origin: CAL_ORIGIN });
+        cal = Cal.ns[namespace];
+        Object.entries(listeners).forEach(([action, callback]) => cal('on', { action, callback }));
+        cal('inline', {
+          calLink: toCalLink(url),
+          elementOrSelector: container,
+          config: { name, email, layout: 'month_view', theme: 'light' },
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        if (!cancelled) setLoadFailed(true);
+      });
 
     return () => {
       cancelled = true;
-      Object.entries(listeners).forEach(([action, callback]) => cal('off', { action, callback }));
+      if (cal) Object.entries(listeners).forEach(([action, callback]) => cal('off', { action, callback }));
       container.replaceChildren();
     };
   }, [url, name, email]);

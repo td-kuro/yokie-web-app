@@ -47,7 +47,14 @@ export default function BookingForm({ workshop, onBooked }) {
     successMessage: 'Almost done! Complete your payment below to confirm your place.',
     errorMessage: "Please complete your payment below to confirm your place. We couldn't save your guest details, so we'll be in touch.",
   });
-  const isSubmitting = saveBooking.isSubmitting || saveBookingBeforePayment.isSubmitting;
+  // Cal.com events that require confirmation: the visitor has only sent a request so far.
+  const saveBookingRequest = useSubmitAction(createWorkshopBooking, {
+    successMessage: "Thanks! Your booking request has been sent. We'll confirm by email once it's approved.",
+    errorMessage:
+      "Your booking request has been sent and we'll confirm by email once it's approved, but we couldn't save your guest details. We'll be in touch.",
+    onSuccess: onBooked,
+  });
+  const isSubmitting = saveBooking.isSubmitting || saveBookingBeforePayment.isSubmitting || saveBookingRequest.isSubmitting;
 
   function handleDetailsSubmit(event) {
     event.preventDefault();
@@ -68,9 +75,11 @@ export default function BookingForm({ workshop, onBooked }) {
 
   function handleCalScheduled(booking) {
     const details = { ...bookingDetails(), calBookingUid: booking.uid };
-    // Only close the form when Cal.com says no payment is due; otherwise its payment form is next.
-    if (booking.paymentRequired === false) saveBooking.submit(details);
-    else saveBookingBeforePayment.submit(details);
+    // Keep the form open when Cal.com's payment form is next. Otherwise close it, telling the
+    // visitor whether they're booked or have sent a request that still needs our approval.
+    if (booking.paymentRequired !== false) saveBookingBeforePayment.submit(details);
+    else if (booking.status === 'PENDING') saveBookingRequest.submit(details);
+    else saveBooking.submit(details);
   }
 
   function handleCalendlyScheduled(payload) {
