@@ -26,7 +26,7 @@ export default function WorkshopCard({ workshop }) {
   return (
     <article className="bg-brand-50 rounded-2xl p-6 border border-brand-100 hover:border-brand-300 transition-all hover:shadow-lg flex flex-col justify-between">
       <div>
-        <div className={`aspect-4/3 rounded-xl mb-5 overflow-hidden relative ${accentClass}`}>
+        <div className={`aspect-square rounded-xl mb-5 overflow-hidden relative ${accentClass}`}>
           <img
             src={workshop.imageUrl}
             alt={workshop.imageAlt}

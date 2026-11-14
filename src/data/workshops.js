@@ -1,4 +1,5 @@
-import christmasHeartImage from '../assets/noel-night-christmas-2026.jpg';
+// Poster text cropped off for the square card; the full poster is the hero image (HeroSection.jsx).
+import christmasHeartImage from '../assets/christmas-heart-tealight-card.jpg';
 import diffuserWorkshopImage from '../assets/diffuser-workshop.jpg';
 import candleWorkshopImage from '../assets/candle-workshop.jpg';
 import scentedKeychainImage from '../assets/scented-keychain-workshop.jpg';
@@ -40,7 +41,6 @@ export const workshops = [
     },
     imageUrl: christmasHeartImage,
     imageAlt: 'Heart-shaped tealights topped with letters spelling LOVE and XMAS on a stone tray',
-    imagePosition: 'center 80%',
     accent: 'yellow',
     inclusions: [
       '4–6 Heart-Shaped Tealights',
@@ -86,9 +86,7 @@ export const workshops = [
     comingSoon: true,
     calendlyUrl: 'https://calendly.com/yokiehome-scentbar/mood-perfume-scented-keychain',
     imageUrl: scentedKeychainImage,
-    imageAlt: 'Pink beaded charm keychain with a heart clip and fluffy scent ball, beside a Scented Blend perfume spray',
-    // Crops out the poster text above and below the keychain.
-    imagePosition: 'center 44%',
+    imageAlt: 'Cream and silver beaded charm keychain with a star charm, letter bead and fluffy scent ball, beside a Scented Blend perfume spray',
     accent: 'pink',
     inclusions: [
       '10ml Perfume Spray Blended to Your Mood',
