@@ -40,7 +40,7 @@ export const workshops = [
       6: 'https://cal.com/yokie-htovur/xmas-tealight-6',
     },
     imageUrl: christmasHeartImage,
-    imageAlt: 'Heart-shaped tealights topped with letters spelling LOVE and XMAS on a stone tray',
+    imageAlt: 'Heart-shaped tealights topped with letters spelling MERRY XMAS on a marble tray',
     accent: 'yellow',
     inclusions: [
       '4–6 Heart-Shaped Tealights',
