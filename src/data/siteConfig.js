@@ -1,7 +1,6 @@
 export const siteConfig = {
   name: 'Yokie Scent Studio',
   shortName: 'YOKIE SCENT',
-  tagline: 'Sensory Studio',
   description: 'Bespoke sensory workshops, portable fragrance tools, and mind-wellness activations.',
   email: 'hello@createwithyokiescents.com',
   location: 'Q Station & Melbourne Pop-Ups',
