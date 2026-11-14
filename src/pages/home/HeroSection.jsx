@@ -9,7 +9,7 @@ const FEATURED_WORKSHOP = workshops.find((workshop) => workshop.id === 'christma
 
 const TRUST_HIGHLIGHTS = [
   { value: '100%', label: 'IFRA Safe' },
-  { value: '60+', label: 'Guests Welcomed' },
+  { value: '100+', label: 'Guests Welcomed' },
   { value: '4 ★', label: 'Event Rating' },
 ];
 
