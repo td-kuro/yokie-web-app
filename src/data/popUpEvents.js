@@ -17,8 +17,8 @@ export const popUpEvents = [
     timeRange: '1:00 PM - 5:00 PM',
   },
   {
-    id: 'christmas-twilight-market',
-    title: 'Christmas Twilight Night Market',
+    id: 'spring-garden-picnic',
+    title: 'Spring Garden Picnic',
     date: null,
     location: 'Melbourne CBD',
     timeRange: '5:00 PM - 9:30 PM',
