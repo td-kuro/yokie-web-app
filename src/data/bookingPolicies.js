@@ -11,7 +11,7 @@ export const bookingPolicies = [
   {
     icon: 'fa-credit-card',
     title: 'Payment',
-    text: 'Full payment is taken when you book.',
+    text: 'Payment is taken when you send your booking request. If we can’t confirm your booking, you’ll get a full refund.',
   },
   {
     icon: 'fa-calendar-check',

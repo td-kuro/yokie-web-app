@@ -44,8 +44,9 @@ export default function BookingForm({ workshop, onBooked }) {
   });
   // Paid Cal.com events: the booking exists, but the visitor still has to pay in the calendar.
   const saveBookingBeforePayment = useSubmitAction(createWorkshopBooking, {
-    successMessage: 'Almost done! Complete your payment below to confirm your place.',
-    errorMessage: "Please complete your payment below to confirm your place. We couldn't save your guest details, so we'll be in touch.",
+    successMessage: 'Almost done! Complete your payment below to send your booking request.',
+    errorMessage:
+      "Please complete your payment below to send your booking request. We couldn't save your guest details, so we'll be in touch.",
   });
   // Cal.com events that require confirmation: the visitor has only sent a request so far.
   const saveBookingRequest = useSubmitAction(createWorkshopBooking, {
@@ -180,7 +181,8 @@ export default function BookingForm({ workshop, onBooked }) {
       </div>
 
       <p className="text-[11px] text-brand-600 leading-relaxed">
-        Full payment is taken at booking. Free reschedule or full refund with at least 48 hours’ notice.
+        Payment is taken with your booking request and fully refunded if we can’t confirm it. Free reschedule or full
+        refund with at least 48 hours’ notice.
       </p>
 
       <button type="submit" className="w-full py-3 rounded-xl btn-dark text-xs">
