@@ -1,10 +1,12 @@
 // "Good to know before you book" panel under the workshops (src/pages/home/WorkshopsSection.jsx).
 // Keep in step with the Cal.com / Calendly event settings and your Terms and Conditions.
+import { siteConfig } from './siteConfig';
+
 export const bookingPolicies = [
   {
     icon: 'fa-user-group',
     title: 'Group size',
-    text: '1–6 guests per booking. Groups of 7–8 are welcome by enquiry.',
+    text: `1–6 guests per booking. We’re currently focusing on small groups for a more interactive experience. For more than 6 people, please email us at ${siteConfig.email} to enquire.`,
   },
   {
     icon: 'fa-credit-card',
@@ -14,7 +16,7 @@ export const bookingPolicies = [
   {
     icon: 'fa-calendar-check',
     title: 'Changes & refunds',
-    text: 'Reschedule for free or get a full refund with at least 48 hours’ notice. Within 48 hours we can’t offer a refund, but you’re welcome to transfer your place to someone else.',
+    text: 'Reschedule for free or get a full refund with at least 48 hours’ notice. Within 48 hours we can’t offer a refund, but you’re welcome to reschedule or transfer your booking to someone else.',
   },
   {
     icon: 'fa-clock',

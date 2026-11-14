@@ -74,7 +74,7 @@ Booking links live on each workshop in `src/data/workshops.js`:
 
 To move a workshop to Cal.com, create one Cal.com event per group size (1–6) with the right price, then replace its `calendlyUrl` with `bookingUrls`. Set each Cal.com event's location to the studio address, not a video call.
 
-Group size limits (1–6, with 7–8 by enquiry) are `BOOKING_GUEST_LIMITS` in `src/data/workshops.js`; the wording on the site is in `src/data/bookingPolicies.js` and `src/pages/home/WorkshopsSection.jsx`.
+Group size limits (1–6, with larger groups by email enquiry) are `BOOKING_GUEST_LIMITS` in `src/data/workshops.js`; the wording on the site is in `src/data/bookingPolicies.js` and `src/pages/home/WorkshopsSection.jsx`.
 
 Bookings, payments, confirmations and reschedules are all managed in Cal.com. With Firebase switched off, the site itself keeps no record of bookings.
 

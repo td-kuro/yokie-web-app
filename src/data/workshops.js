@@ -121,6 +121,6 @@ export const workshops = [
   // },
 ];
 
-// Bookings are for 1–6 guests; groups of 7–8 are by enquiry (see src/data/bookingPolicies.js).
+// Bookings are for 1–6 guests; larger groups are by email enquiry (see src/data/bookingPolicies.js).
 // Keep in step with the guests check in firestore.rules.
 export const BOOKING_GUEST_LIMITS = { min: 1, max: 6 };

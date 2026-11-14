@@ -147,7 +147,7 @@ export default function BookingForm({ workshop, onBooked }) {
         />
       </div>
       <p className="text-[11px] text-brand-600 -mt-2">
-        {BOOKING_GUEST_LIMITS.min}–{BOOKING_GUEST_LIMITS.max} guests per session. Groups of 7–8?{' '}
+        {BOOKING_GUEST_LIMITS.min}–{BOOKING_GUEST_LIMITS.max} guests per session. More than 6?{' '}
         <a href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(`Group enquiry: ${workshop.title}`)}`} className="underline">
           Email us
         </a>
