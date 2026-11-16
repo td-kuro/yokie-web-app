@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: 'YOKIE SCENT',
   description: 'Bespoke sensory workshops, portable fragrance tools, and mind-wellness activations.',
   email: 'hello@createwithyokiescents.com',
-  location: 'Q Station & Melbourne Pop-Ups',
+  location: 'Melbourne CBD & South Melbourne Pop-Ups',
   instagramHandle: '@yokie.scent',
   // Set to the full profile URL to turn the gallery's Instagram tile into a link.
   instagramUrl: '',
