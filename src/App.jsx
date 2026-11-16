@@ -5,14 +5,20 @@ import Header from './components/layout/Header';
 import { BookingProvider } from './context/BookingProvider';
 import { CartProvider } from './context/CartProvider';
 import HomePage from './pages/HomePage';
+import TermsPage from './pages/TermsPage';
+import { currentPage } from './utils/links';
+
+const PAGES = { home: HomePage, terms: TermsPage };
 
 export default function App() {
+  const Page = PAGES[currentPage] ?? HomePage;
+
   return (
     <CartProvider>
       <BookingProvider>
         <Header />
         <main>
-          <HomePage />
+          <Page />
         </main>
         <Footer />
 

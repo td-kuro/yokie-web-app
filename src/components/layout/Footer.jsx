@@ -1,4 +1,5 @@
 import { footerLinks, siteConfig } from '../../data/siteConfig';
+import { siteHref } from '../../utils/links';
 import NewsletterForm from './NewsletterForm';
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
@@ -18,7 +19,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-brand-300">
               {footerLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="hover:text-white">
+                  <a href={siteHref(link.href)} className="hover:text-white">
                     {link.label}
                   </a>
                 </li>

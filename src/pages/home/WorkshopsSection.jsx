@@ -3,6 +3,7 @@ import WorkshopCard from '../../components/workshops/WorkshopCard';
 import WorkshopFilters from '../../components/workshops/WorkshopFilters';
 import LoadErrorMessage from '../../components/ui/LoadErrorMessage';
 import { bookingPolicies } from '../../data/bookingPolicies';
+import { siteHref, TERMS_HREF } from '../../utils/links';
 import { workshopCategories } from '../../data/workshops';
 import { useWorkshops } from '../../hooks/useCatalog';
 
@@ -62,6 +63,13 @@ export default function WorkshopsSection() {
               </div>
             ))}
           </dl>
+          <p className="mt-8 text-center text-sm text-brand-700 font-light">
+            Read our full{' '}
+            <a href={siteHref(TERMS_HREF)} className="font-medium text-brand-900 underline underline-offset-4 hover:text-brand-600">
+              Terms &amp; Conditions
+            </a>
+            .
+          </p>
         </div>
       </div>
     </section>

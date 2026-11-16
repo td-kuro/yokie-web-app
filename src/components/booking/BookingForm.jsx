@@ -5,6 +5,7 @@ import { useFormFields } from '../../hooks/useFormFields';
 import { useSubmitAction } from '../../hooks/useSubmitAction';
 import { createWorkshopBooking } from '../../services/bookingService';
 import { formatAud } from '../../utils/formatters';
+import { siteHref, TERMS_HREF } from '../../utils/links';
 import { isCalUrl } from '../../services/calcom';
 import { parseGuestCount } from '../../utils/pricing';
 import { TextField } from '../ui/FormField';
@@ -182,7 +183,20 @@ export default function BookingForm({ workshop, onBooked }) {
 
       <p className="text-[11px] text-brand-600 leading-relaxed">
         Payment is taken with your booking request and fully refunded if we can’t confirm it. Free reschedule or full
-        refund with at least 48 hours’ notice.
+        refund with at least 48 hours’ notice. By booking, you agree to our{' '}
+        <a href={siteHref(TERMS_HREF)} target="_blank" rel="noopener" className="underline underline-offset-2 hover:text-brand-900">
+          Terms &amp; Conditions
+        </a>{' '}
+        and{' '}
+        <a
+          href={siteHref(`${TERMS_HREF}#refund-policy`)}
+          target="_blank"
+          rel="noopener"
+          className="underline underline-offset-2 hover:text-brand-900"
+        >
+          Refund Policy
+        </a>
+        .
       </p>
 
       <button type="submit" className="w-full py-3 rounded-xl btn-dark text-xs">

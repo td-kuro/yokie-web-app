@@ -16,6 +16,8 @@ export const siteConfig = {
 };
 
 // Includes `link` only while the shop is switched on.
+// Links are written as seen from the homepage ('#workshops', 'terms/'); siteHref() in
+// src/utils/links.js adjusts them on other pages.
 const shopLink = (link) => (siteConfig.shopEnabled ? [link] : []);
 
 export const mainNavLinks = [
@@ -30,4 +32,6 @@ export const footerLinks = [
   { href: '#workshops', label: 'Book Workshop' },
   { href: '#about', label: 'Our Story' },
   ...shopLink({ href: '#shop', label: 'At-Home Kits' }),
+  { href: 'terms/', label: 'Terms & Conditions' },
+  { href: 'terms/#refund-policy', label: 'Refund Policy' },
 ];

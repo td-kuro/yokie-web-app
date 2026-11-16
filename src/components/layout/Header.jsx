@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import logo from '../../assets/yokie-scent-logo.png';
 import { mainNavLinks, siteConfig } from '../../data/siteConfig';
 import { useEscapeKey } from '../../hooks/useEscapeKey';
+import { siteHref } from '../../utils/links';
 import CartButton from '../cart/CartButton';
 import MobileMenu from './MobileMenu';
 
@@ -14,7 +15,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full glass-card border-b border-brand-100/80 transition-all duration-300">
       <div className="section-container">
         <div className="flex items-center justify-between h-20">
-          <a href="#" className="group shrink-0" aria-label={`${siteConfig.name} home`}>
+          <a href={siteHref('#')} className="group shrink-0" aria-label={`${siteConfig.name} home`}>
             <img
               src={logo}
               alt=""
@@ -26,7 +27,7 @@ export default function Header() {
 
           <nav aria-label="Main" className="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-800">
             {mainNavLinks.map((link) => (
-              <a key={link.href} href={link.href} className="hover:text-brand-500 transition-colors">
+              <a key={link.href} href={siteHref(link.href)} className="hover:text-brand-500 transition-colors">
                 {link.label}
               </a>
             ))}
@@ -35,7 +36,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-4">
             {siteConfig.shopEnabled && <CartButton />}
             <a
-              href="#workshops"
+              href={siteHref('#workshops')}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-brand-800 text-brand-50 text-sm font-medium hover:bg-brand-900 transition-all shadow-sm hover:shadow"
             >
               Book Now
