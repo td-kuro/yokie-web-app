@@ -4,9 +4,9 @@ export const siteConfig = {
   description: 'Bespoke sensory workshops, portable fragrance tools, and mind-wellness activations.',
   email: 'hello@createwithyokiescents.com',
   location: 'Melbourne CBD & South Melbourne Pop-Ups',
-  instagramHandle: '@yokie.scent',
-  // Set to the full profile URL to turn the gallery's Instagram tile into a link.
-  instagramUrl: '',
+  instagramHandle: '@yokiescents_melb_workshop',
+  // Profile link used by the gallery (photos, Instagram tile, follow link) and the footer.
+  instagramUrl: 'https://www.instagram.com/yokiescents_melb_workshop/',
   // Default booking calendar. A workshop's own `bookingUrls` or `calendlyUrl` (src/data/workshops.js) take priority.
   calendlyUrl: 'https://calendly.com/yokiehome-scentbar',
   // Set to true to show the At-Home DIY Craft Kits section, the cart and the shop links.

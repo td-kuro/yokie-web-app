@@ -1,6 +1,5 @@
 import { footerLinks, siteConfig } from '../../data/siteConfig';
 import { siteHref } from '../../utils/links';
-import NewsletterForm from './NewsletterForm';
 
 const COPYRIGHT_YEAR = new Date().getFullYear();
 
@@ -38,8 +37,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">Stay Scented</h4>
-            <NewsletterForm />
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3">Follow Us</h4>
+            <a
+              href={siteConfig.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs text-brand-300 hover:text-white [overflow-wrap:anywhere]"
+            >
+              <i className="fa-brands fa-instagram text-base" aria-hidden="true" />
+              {siteConfig.instagramHandle}
+            </a>
           </div>
         </div>
 

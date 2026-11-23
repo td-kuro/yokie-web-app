@@ -3,23 +3,17 @@ import LoadErrorMessage from '../../components/ui/LoadErrorMessage';
 import { siteConfig } from '../../data/siteConfig';
 import { useGalleryImages, usePopUpEvents } from '../../hooks/useCatalog';
 
-function InstagramTile() {
-  const className =
-    'aspect-square rounded-2xl overflow-hidden bg-brand-300 flex flex-col items-center justify-center text-white p-4 text-center';
-  const content = (
-    <>
-      <i className="fa-brands fa-instagram text-2xl mb-1" aria-hidden="true" />
-      <span className="text-xs font-semibold">{siteConfig.instagramHandle}</span>
-      <span className="text-[10px] text-brand-100">Follow on Socials</span>
-    </>
-  );
+const INSTAGRAM_LINK = { href: siteConfig.instagramUrl, target: '_blank', rel: 'noopener noreferrer' };
 
-  if (!siteConfig.instagramUrl) {
-    return <div className={className}>{content}</div>;
-  }
+function InstagramTile() {
   return (
-    <a href={siteConfig.instagramUrl} target="_blank" rel="noopener noreferrer" className={`${className} hover:bg-brand-400 transition-colors`}>
-      {content}
+    <a
+      {...INSTAGRAM_LINK}
+      className="aspect-square rounded-2xl overflow-hidden bg-brand-300 hover:bg-brand-400 transition-colors flex flex-col items-center justify-center text-white p-4 text-center"
+    >
+      <i className="fa-brands fa-instagram text-2xl mb-1" aria-hidden="true" />
+      <span className="text-xs font-semibold [overflow-wrap:anywhere]">{siteConfig.instagramHandle}</span>
+      <span className="text-[10px] text-brand-100 mt-0.5">Follow on Instagram</span>
     </a>
   );
 }
@@ -51,7 +45,16 @@ export default function GallerySection() {
 
           <div className="lg:col-span-7">
             <span className="eyebrow mb-2">#YokieScentStudio</span>
-            <h2 className="font-serif text-3xl font-normal text-brand-900 mb-6">Workshop Moments</h2>
+            <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2 mb-6">
+              <h2 className="font-serif text-3xl font-normal text-brand-900">Workshop Moments</h2>
+              <a
+                {...INSTAGRAM_LINK}
+                className="inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:text-brand-900"
+              >
+                <i className="fa-brands fa-instagram text-base" aria-hidden="true" />
+                See more on Instagram
+              </a>
+            </div>
 
             <LoadErrorMessage status={imagesStatus}>
               We couldn&apos;t load the gallery right now.
@@ -59,14 +62,19 @@ export default function GallerySection() {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {images.map((image) => (
-                <div key={image.id} className="aspect-square rounded-2xl overflow-hidden bg-brand-200">
+                <a
+                  key={image.id}
+                  {...INSTAGRAM_LINK}
+                  aria-label={`${image.imageAlt} (more on Instagram)`}
+                  className="group aspect-square rounded-2xl overflow-hidden bg-brand-200"
+                >
                   <img
                     src={image.imageUrl}
-                    alt={image.imageAlt}
+                    alt=""
                     loading="lazy"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                </div>
+                </a>
               ))}
               <InstagramTile />
             </div>

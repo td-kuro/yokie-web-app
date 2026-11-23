@@ -401,7 +401,7 @@ export const legalDocuments = [
               'Yokie Scent (sole trader)',
               'ABN: 92 523 947 976',
               'Email: hello@createwithyokiescents.com',
-              'Instagram: @yokiehome_scentbar',
+              'Instagram: @yokiescents_melb_workshop',
             ],
           },
         ],
@@ -441,7 +441,7 @@ export const legalDocuments = [
             text: 'Subject to section 6, no refund is payable where a booking has not been cancelled with at least forty-eight (48) hours’ notice before the start time and the Participant does not arrive within thirty (30) minutes after the start time.',
           },
           {
-            text: 'To reschedule or cancel, email hello@createwithyokiescents.com or message us on Instagram @yokiehome_scentbar with your name and booking date. Notice is measured from the time we receive your message.',
+            text: 'To reschedule or cancel, email hello@createwithyokiescents.com or message us on Instagram @yokiescents_melb_workshop with your name and booking date. Notice is measured from the time we receive your message.',
           },
         ],
       },
@@ -566,7 +566,7 @@ export const legalDocuments = [
         heading: 'Questions and complaints',
         blocks: [
           {
-            text: 'Contact us at hello@createwithyokiescents.com or on Instagram @yokiehome_scentbar. We acknowledge messages within three (3) business days and aim to resolve matters within fourteen (14) days.',
+            text: 'Contact us at hello@createwithyokiescents.com or on Instagram @yokiescents_melb_workshop. We acknowledge messages within three (3) business days and aim to resolve matters within fourteen (14) days.',
           },
         ],
       },
