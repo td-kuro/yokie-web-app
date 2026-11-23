@@ -1,4 +1,5 @@
 // Local "Workshop Moments" gallery. Firestore documents in the `galleryImages` collection use the same shape.
+// Add `postUrl` to link a photo to one Instagram post; without it, the photo links to the profile.
 export const galleryImages = [
   {
     id: 'liquid-diffuser',
@@ -19,6 +20,7 @@ export const galleryImages = [
     id: 'jelly-candle',
     imageUrl: 'https://images.unsplash.com/photo-1603006905003-be475563bc59?auto=format&fit=crop&q=80&w=300',
     imageAlt: 'Decorated jelly crystal candles',
+    postUrl: 'https://www.instagram.com/p/Dd0qGLJTlqM/',
   },
   // Hidden for now, along with the Car Vent workshop (see src/data/workshops.js).
   // {

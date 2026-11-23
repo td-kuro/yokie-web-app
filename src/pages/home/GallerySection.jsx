@@ -65,8 +65,9 @@ export default function GallerySection() {
                 <a
                   key={image.id}
                   {...INSTAGRAM_LINK}
-                  aria-label={`${image.imageAlt} (more on Instagram)`}
-                  className="group aspect-square rounded-2xl overflow-hidden bg-brand-200"
+                  href={image.postUrl ?? INSTAGRAM_LINK.href}
+                  aria-label={`${image.imageAlt} (${image.postUrl ? 'view the post' : 'more'} on Instagram)`}
+                  className="group relative aspect-square rounded-2xl overflow-hidden bg-brand-200"
                 >
                   <img
                     src={image.imageUrl}
@@ -74,6 +75,11 @@ export default function GallerySection() {
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
+                  {image.postUrl && (
+                    <span className="absolute top-2 right-2 w-7 h-7 rounded-full bg-white/90 text-brand-800 flex items-center justify-center shadow-sm">
+                      <i className="fa-brands fa-instagram text-sm" aria-hidden="true" />
+                    </span>
+                  )}
                 </a>
               ))}
               <InstagramTile />
